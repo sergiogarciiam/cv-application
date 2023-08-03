@@ -1,33 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react"
+import Button from "./components/Button.jsx"
+import Categories from "./components/Categories.jsx"
+import Content from "./components/Content.jsx";
+import Cv from "./components/Cv.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isCategoriesDisplay, setIsCategoriesDisplay] = useState(false)
+  const [contents, setContentList] = useState({})
+  const [activeContent, setActiveContent] = useState("")
+
+  const showCategories = () => {
+    setIsCategoriesDisplay(true)
+  }
+
+  const hideCategories = (e) => {
+    setIsCategoriesDisplay(false)
+    setContentList({...contents, [e.target.textContent]: e.target.textContent})
+  }
+
+  const changeActiveContent = (e) => {
+    setActiveContent(e.target.id)
+  }
+
+  const changeContent = (e) => {
+    setContentList({...contents, [e.target.id]: e.target.value})
+  }
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {Object.keys(contents).map((key) => { 
+          const content = contents[key]
+          return (
+            <Content key={key} name={content} onClick={changeActiveContent} isActive={key===activeContent} id={key} onChange={changeContent}></Content>
+          )}
+        )}
+
+        <Button name="+ Add content" onClick={showCategories}></Button> 
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <Cv contents={contents}></Cv>
+
+      {isCategoriesDisplay && <Categories options={contents} onClick={hideCategories} />}
     </>
   )
 }

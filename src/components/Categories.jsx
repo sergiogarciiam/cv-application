@@ -1,22 +1,22 @@
-import Button from "./Button"
+import Button from "./Button";
 
-function Categories({contents, onClick}){
+function Categories({ contents, onClick }) {
   return (
     <div>
-      {Object.keys(contents).map((key) => { 
-        if(!contents[key].isShow) {
+      {Object.keys(contents).map((key) => {
+        if (!contents[key].isShow) {
           return (
-            <Button 
+            <Button
               key={contents[key].id}
               id={contents[key].id}
               name={contents[key].name}
               onClick={onClick}
             />
-          )
+          );
         }
       })}
     </div>
-  )
+  );
 }
 
-export default Categories
+export default Categories;

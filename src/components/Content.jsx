@@ -129,11 +129,19 @@ function Content({ content, isActive, onClick, changeContent }) {
 
   return (
     <div className={content.name}>
-      {!isActive && <h2 id={content.id} onClick={onClick}>{content.name}</h2>}
+      {!isActive && (
+        <h2 id={content.id} onClick={onClick}>
+          {content.name}
+        </h2>
+      )}
       {isActive && (
         <>
           <input value={content.name} id={content.id} onChange={changeName} />
-          <Details data={content} changeData={changeData} changeList={changeList} />
+          <Details
+            data={content}
+            changeData={changeData}
+            changeList={changeList}
+          />
         </>
       )}
     </div>

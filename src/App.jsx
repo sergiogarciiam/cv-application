@@ -1,57 +1,61 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import Button from "./components/Button.jsx"
-import Categories from "./components/Categories.jsx"
+import Button from "./components/Button.jsx";
+import Categories from "./components/Categories.jsx";
 import Content from "./components/Content.jsx";
 
 import { initialContent } from "./content.js";
 
 function App() {
-  const [contents, setContentList] = useState(initialContent)
-  const [isCategoriesDisplay, setIsCategoriesDisplay] = useState(false)
-  const [activeContent, setActiveContent] = useState("")
- 
+  const [contents, setContentList] = useState(initialContent);
+  const [isCategoriesDisplay, setIsCategoriesDisplay] = useState(false);
+  const [activeContent, setActiveContent] = useState("");
 
   const showCategories = () => {
-    setIsCategoriesDisplay(true)
-  }
+    setIsCategoriesDisplay(true);
+  };
 
   const changeActiveContent = (e) => {
-    setActiveContent(e.target.id)
-  }
+    setActiveContent(e.target.id);
+  };
 
   const hideCategories = (e) => {
-    setIsCategoriesDisplay(false)
-    setContentList({...contents, [e.target.id]: {...contents[e.target.id], isShow: true}})
-  }
+    setIsCategoriesDisplay(false);
+    setContentList({
+      ...contents,
+      [e.target.id]: { ...contents[e.target.id], isShow: true },
+    });
+  };
 
   const changeContent = (newContent) => {
-    setContentList({...contents, [newContent.id]: newContent})
-  }
+    setContentList({ ...contents, [newContent.id]: newContent });
+  };
 
   return (
     <>
       <div>
-        {Object.keys(contents).map((key) => { 
-          if (contents[key].isShow){
+        {Object.keys(contents).map((key) => {
+          if (contents[key].isShow) {
             return (
-              <Content 
-                key={contents[key].id} 
-                content={contents[key]} 
+              <Content
+                key={contents[key].id}
+                content={contents[key]}
                 isActive={key === activeContent}
-                onClick={changeActiveContent} 
+                onClick={changeActiveContent}
                 changeContent={changeContent}
               />
-            )}
+            );
           }
-        )}
+        })}
 
-        <Button name="+ Add content" onClick={showCategories}></Button> 
+        <Button name="+ Add content" onClick={showCategories}></Button>
       </div>
 
-      {isCategoriesDisplay && <Categories contents={contents} onClick={hideCategories} />}
+      {isCategoriesDisplay && (
+        <Categories contents={contents} onClick={hideCategories} />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

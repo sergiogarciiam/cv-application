@@ -1,14 +1,19 @@
 import Button from "./Button"
 
-function Categories({options, onClick}){
-  const names = ["Personal Details", "About Me", "Professional Experience", "Education", "Skills", "Projects", "Languages"]
+function Categories({contents, onClick}){
   return (
     <div>
-      {names.map((name, index) => {
-        if (options.hasOwnProperty(name)) return null
-        return (
-          <Button key={index} name={name} onClick={onClick}></Button>
-        )
+      {Object.keys(contents).map((key) => { 
+        if(!contents[key].isShow) {
+          return (
+            <Button 
+              key={contents[key].id}
+              id={contents[key].id}
+              name={contents[key].name}
+              onClick={onClick}
+            />
+          )
+        }
       })}
     </div>
   )

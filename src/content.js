@@ -22,7 +22,7 @@ export const initialContent = {
     list: [
       {
         id: 0,
-        jobTitle: "",
+        name: "New",
         city: "",
         country: "",
         start: "",
@@ -38,7 +38,7 @@ export const initialContent = {
     list: [
       {
         id: 0,
-        degree: "",
+        name: "New",
         school: "",
         schoolLink: "",
         city: "",
@@ -53,7 +53,7 @@ export const initialContent = {
     id: 4,
     name: "Skills",
     isShow: false,
-    list: [{ id: 0, name: "" }],
+    list: [{ id: 0, name: "New" }],
   },
   5: {
     id: 5,
@@ -62,7 +62,7 @@ export const initialContent = {
     list: [
       {
         id: 0,
-        projectTitle: "",
+        name: "New",
         projectLink: "",
         start: "",
         end: "",
@@ -75,6 +75,6 @@ export const initialContent = {
     id: 6,
     name: "Languages",
     isShow: false,
-    list: [{ id: 0, name: "" }],
+    list: [{ id: 0, name: "New" }],
   },
 };

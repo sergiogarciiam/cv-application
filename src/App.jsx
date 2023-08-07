@@ -5,6 +5,7 @@ import Categories from "./components/Categories.jsx";
 import Content from "./components/Content.jsx";
 
 import { initialContent } from "./content.js";
+import Cv from "./components/Cv.jsx";
 
 function App() {
   const [contents, setContentList] = useState(initialContent);
@@ -54,6 +55,8 @@ function App() {
       {isCategoriesDisplay && (
         <Categories contents={contents} onClick={hideCategories} />
       )}
+
+      <Cv contents={contents}></Cv>
     </>
   );
 }

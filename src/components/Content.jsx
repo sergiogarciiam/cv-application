@@ -128,7 +128,7 @@ function Content({ content, isActive, onClick, changeContent }) {
   };
 
   return (
-    <div className={content.name}>
+    <div>
       {!isActive && (
         <h2 id={content.id} onClick={onClick}>
           {content.name}

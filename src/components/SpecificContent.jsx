@@ -2,6 +2,8 @@ import FormList from "./FormList";
 import Form from "./Form";
 import Edit from "../assets/images/edit.svg";
 import Trash from "../assets/images/trash.svg";
+import { useState } from "react";
+import DeleteMenu from "./DeleteMenu";
 
 function SpecificContent({
   content,
@@ -10,6 +12,8 @@ function SpecificContent({
   changeContent,
   deleteContent,
 }) {
+  const [isDeleteMenu, setIsDeleteMenu] = useState(false);
+
   const changeTitle = (e) => {
     let newContent = { ...content };
     newContent.title = e.target.value;
@@ -28,6 +32,14 @@ function SpecificContent({
     changeContent(newContent);
   };
 
+  const showDeleteMenu = () => {
+    setIsDeleteMenu(true);
+  };
+
+  const hideMenu = () => {
+    setIsDeleteMenu(false);
+  };
+
   return (
     <>
       {!isActive && (
@@ -36,7 +48,7 @@ function SpecificContent({
             {content.title}
           </h2>
           <img id={content.id} src={Edit} onClick={showContent}></img>
-          <img id={content.id} src={Trash} onClick={deleteContent}></img>
+          <img id={content.id} src={Trash} onClick={showDeleteMenu}></img>
         </div>
       )}
       {isActive && (
@@ -47,7 +59,7 @@ function SpecificContent({
               id={content.id}
               onChange={changeTitle}
             />
-            <img id={content.id} src={Trash} onClick={deleteContent}></img>
+            <img id={content.id} src={Trash} onClick={showDeleteMenu}></img>
           </div>
 
           <ContentDetails
@@ -56,6 +68,13 @@ function SpecificContent({
             changeList={changeList}
           />
         </div>
+      )}
+      {isDeleteMenu && (
+        <DeleteMenu
+          id={content.id}
+          deleteContent={deleteContent}
+          hideMenu={hideMenu}
+        ></DeleteMenu>
       )}
     </>
   );

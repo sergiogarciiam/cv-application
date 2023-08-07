@@ -56,7 +56,6 @@ export const getContents = {
   skills: {
     id: "skills",
     title: "Skills",
-    isShow: false,
     list: [{ id: 0, name: "New" }],
   },
   projects: {

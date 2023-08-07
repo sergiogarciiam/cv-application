@@ -48,7 +48,7 @@ function ListItem({ object, itemEdit, changeItemActive, updateList }) {
   } else {
     return (
       <h3 key={object.id} id={object.id} onClick={changeItemActive}>
-        {object.title}
+        {object.name}
       </h3>
     );
   }

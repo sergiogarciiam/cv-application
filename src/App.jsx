@@ -47,7 +47,7 @@ function App() {
               key={contents[key].id}
               content={contents[key]}
               isActive={key === activeContent}
-              showContent={changeActiveContent}
+              changeActiveContent={changeActiveContent}
               changeContent={changeContent}
               deleteContent={deleteContent}
             />

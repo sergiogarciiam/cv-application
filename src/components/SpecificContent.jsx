@@ -1,14 +1,17 @@
-import FormList from "./FormList";
-import Form from "./Form";
+import { useState } from "react";
+
 import Edit from "../assets/images/edit.svg";
 import Trash from "../assets/images/trash.svg";
-import { useState } from "react";
+import Close from "../assets/images/close.svg";
+
+import FormList from "./FormList";
+import Form from "./Form";
 import DeleteMenu from "./DeleteMenu";
 
 function SpecificContent({
   content,
   isActive,
-  showContent,
+  changeActiveContent,
   changeContent,
   deleteContent,
 }) {
@@ -43,11 +46,15 @@ function SpecificContent({
   return (
     <>
       {!isActive && (
-        <div id={content.id} className="specific-content" onClick={showContent}>
-          <h2 id={content.id} onClick={showContent}>
+        <div
+          id={content.id}
+          className="specific-content"
+          onClick={changeActiveContent}
+        >
+          <h2 id={content.id} onClick={changeActiveContent}>
             {content.title}
           </h2>
-          <img id={content.id} src={Edit} onClick={showContent}></img>
+          <img id={content.id} src={Edit} onClick={changeActiveContent}></img>
           <img id={content.id} src={Trash} onClick={showDeleteMenu}></img>
         </div>
       )}
@@ -59,7 +66,7 @@ function SpecificContent({
               id={content.id}
               onChange={changeTitle}
             />
-            <img id={content.id} src={Trash} onClick={showDeleteMenu}></img>
+            <img src={Close} onClick={changeActiveContent}></img>
           </div>
 
           <ContentDetails

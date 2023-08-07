@@ -33,8 +33,8 @@ function App() {
   };
 
   return (
-    <>
-      <div>
+    <div className="page">
+      <div className="contents">
         {Object.keys(contents).map((key) => {
           if (contents[key].isShow) {
             return (
@@ -57,7 +57,7 @@ function App() {
       )}
 
       <Cv contents={contents}></Cv>
-    </>
+    </div>
   );
 }
 

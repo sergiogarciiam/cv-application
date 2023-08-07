@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Section({ id, data, changeData }) {
   return (
-    <div>
+    <div className="section">
       <label>{id}</label>
       <input value={data} id={id} onChange={changeData}></input>
     </div>
@@ -80,7 +80,7 @@ function Details({ data, changeData, changeList }) {
   };
 
   return (
-    <>
+    <div className="details">
       {data !== undefined &&
         Object.keys(data).map((key) => {
           if (key === "id" || key === "name" || key === "isShow") return null;
@@ -104,7 +104,7 @@ function Details({ data, changeData, changeList }) {
             );
           }
         })}
-    </>
+    </div>
   );
 }
 
@@ -128,7 +128,7 @@ function Content({ content, isActive, onClick, changeContent }) {
   };
 
   return (
-    <div>
+    <div className="specific-content">
       {!isActive && (
         <h2 id={content.id} onClick={onClick}>
           {content.name}

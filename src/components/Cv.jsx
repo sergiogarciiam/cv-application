@@ -1,7 +1,7 @@
 function List({ list }) {
   return list.map((object) => {
     return Object.keys(object).map((key) => {
-      if (key === "id" || object[key] === 0) return null;
+      if (key === "id" || object.id === 0) return null;
       else if (key === "name") return <h4 key={key}>{object[key]}</h4>;
       else return <p key={key}>{object[key]}</p>;
     });
@@ -19,7 +19,7 @@ function Element({ element }) {
 
 function Cv({ contents }) {
   return (
-    <div>
+    <div className="cv">
       {Object.keys(contents).map((key) => {
         if (contents[key].isShow)
           return <Element key={key} element={contents[key]}></Element>;

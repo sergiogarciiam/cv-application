@@ -2,7 +2,7 @@ import Button from "./Button";
 
 function Categories({ contents, onClick }) {
   return (
-    <div>
+    <div className="categories">
       {Object.keys(contents).map((key) => {
         if (!contents[key].isShow) {
           return (

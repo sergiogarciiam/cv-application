@@ -1,10 +1,9 @@
 import { useState } from "react";
+import { initialContent } from "./util/content.js";
 
 import Categories from "./components/Categories.jsx";
-import Content from "./components/Content.jsx";
-
-import { initialContent } from "./content.js";
 import Cv from "./components/Cv.jsx";
+import SpecificContent from "./components/SpecificContent.jsx";
 
 function App() {
   const [contents, setContentList] = useState(initialContent);
@@ -37,11 +36,11 @@ function App() {
         {Object.keys(contents).map((key) => {
           if (contents[key].isShow) {
             return (
-              <Content
+              <SpecificContent
                 key={contents[key].id}
                 content={contents[key]}
                 isActive={key === activeContent}
-                onClick={changeActiveContent}
+                showContent={changeActiveContent}
                 changeContent={changeContent}
               />
             );

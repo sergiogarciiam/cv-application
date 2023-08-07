@@ -42,14 +42,31 @@ button:hover {
   color: #222;
   padding: 20px;
   border-radius: 50px;
+  cursor: pointer;
 
   display: flex;
-  flex-direction: column;
   gap: 20px;
 }
 
-.specific-content > h2 {
+.specific-content.active {
+  cursor: default;
+  flex-direction: column;
+}
+.specific-content.active img {
+  opacity: 1;
+}
+
+.specific-content img:first-of-type {
+  margin-left: auto;
+}
+.specific-content img {
+  opacity: 0;
   cursor: pointer;
+  width: 25px;
+}
+
+.specific-content:hover > img {
+  opacity: 1;
 }
 
 .details {

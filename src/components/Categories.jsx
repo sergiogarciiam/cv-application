@@ -1,17 +1,16 @@
-import Button from "./Button";
-
 function Categories({ contents, onClick }) {
   return (
     <div className="categories">
       {Object.keys(contents).map((key) => {
         if (!contents[key].isShow) {
           return (
-            <Button
+            <button
               key={contents[key].id}
               id={contents[key].id}
-              name={contents[key].name}
               onClick={onClick}
-            />
+            >
+              {contents[key].title}
+            </button>
           );
         }
       })}

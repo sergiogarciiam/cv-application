@@ -11,7 +11,7 @@ function List({ list }) {
 function Element({ element }) {
   return Object.keys(element).map((key) => {
     if (key === "id" || key === "isShow") return null;
-    else if (key === "name") return <h2 key={key}>{element[key]}</h2>;
+    else if (key === "title") return <h2 key={key}>{element[key]}</h2>;
     else if (key === "list") return <List key={key} list={element[key]}></List>;
     else return <p key={key}>{element[key]}</p>;
   });

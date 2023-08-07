@@ -70,9 +70,12 @@ button:hover {
 }
 
 .specific-content > input,
-.section > input {
+.section > input,
+.specific-content > textarea,
+.section > textarea {
   padding: 5px;
   border-radius: 25px;
+  resize: none;
 }
 
 .contents > button {

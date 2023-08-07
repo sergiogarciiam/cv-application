@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Button from "./components/Button.jsx";
 import Categories from "./components/Categories.jsx";
 import Content from "./components/Content.jsx";
 
@@ -49,7 +48,7 @@ function App() {
           }
         })}
 
-        <Button name="+ Add content" onClick={showCategories}></Button>
+        <button onClick={showCategories}>+ Add content</button>
       </div>
 
       {isCategoriesDisplay && (

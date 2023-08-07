@@ -1,10 +1,41 @@
 import { useState } from "react";
 
-function Section({ id, data, changeData }) {
+const getInputType = {
+  start: "date",
+  end: "date",
+  phone: "number",
+  link: "url",
+};
+
+function Section({ objectId, id, data, changeData }) {
+  let type = getInputType[id];
+  if (type === null) type = "text";
+
+  let isDescription = id === "description";
+
+  let idName = id.charAt(0).toUpperCase() + id.slice(1);
+
   return (
     <div className="section">
-      <label>{id}</label>
-      <input value={data} id={id} onChange={changeData}></input>
+      <label>{idName}</label>
+      {!isDescription && (
+        <input
+          value={data}
+          className={objectId}
+          id={id}
+          onChange={changeData}
+          type={type}
+        ></input>
+      )}
+      {isDescription && (
+        <textarea
+          value={data}
+          className={objectId}
+          id={id}
+          onChange={changeData}
+          type={type}
+        ></textarea>
+      )}
     </div>
   );
 }
@@ -18,7 +49,8 @@ function ListItem({ object, itemEdit, changeItemActive, updateList }) {
           return (
             <Section
               key={key}
-              id={object.id + "-" + key}
+              objectId={object.id}
+              id={key}
               data={object[key]}
               changeData={updateList}
             />
@@ -29,7 +61,7 @@ function ListItem({ object, itemEdit, changeItemActive, updateList }) {
   } else {
     return (
       <h3 key={object.id} id={object.id} onClick={changeItemActive}>
-        {object.name}
+        {object.title}
       </h3>
     );
   }
@@ -74,8 +106,7 @@ function Details({ data, changeData, changeList }) {
 
   const updateList = (e) => {
     const newList = [...data.list];
-    const idSplit = e.target.id.split("-");
-    newList[idSplit[0]][idSplit[1]] = e.target.value;
+    newList[e.target.classList[0]][e.target.id] = e.target.value;
     changeList(newList);
   };
 
@@ -83,8 +114,8 @@ function Details({ data, changeData, changeList }) {
     <div className="details">
       {data !== undefined &&
         Object.keys(data).map((key) => {
-          if (key === "id" || key === "name" || key === "isShow") return null;
-          if (key === "list") {
+          if (key === "id" || key === "title" || key === "isShow") return null;
+          else if (key === "list") {
             return (
               <List
                 key={key}
@@ -109,9 +140,9 @@ function Details({ data, changeData, changeList }) {
 }
 
 function Content({ content, isActive, onClick, changeContent }) {
-  const changeName = (e) => {
+  const changeTitle = (e) => {
     let newContent = { ...content };
-    newContent.name = e.target.value;
+    newContent.title = e.target.value;
     changeContent(newContent);
   };
 
@@ -131,12 +162,12 @@ function Content({ content, isActive, onClick, changeContent }) {
     <div className="specific-content">
       {!isActive && (
         <h2 id={content.id} onClick={onClick}>
-          {content.name}
+          {content.title}
         </h2>
       )}
       {isActive && (
         <>
-          <input value={content.name} id={content.id} onChange={changeName} />
+          <input value={content.title} id={content.id} onChange={changeTitle} />
           <Details
             data={content}
             changeData={changeData}

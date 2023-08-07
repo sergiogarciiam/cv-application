@@ -1,23 +1,31 @@
 export const initialContent = {
   0: {
     id: 0,
-    name: "Personal Details",
+    title: "Personal Details",
     isShow: true,
-    fullName: "",
+    name: "",
+    photo: "",
     job: "",
+    address: "",
     email: "",
     phone: "",
-    address: "",
+    list: [
+      {
+        id: 0,
+        name: "New",
+        link: "",
+      },
+    ],
   },
   1: {
     id: 1,
-    name: "About Me",
+    title: "About Me",
     isShow: false,
     description: "",
   },
   2: {
     id: 2,
-    name: "Professional Experience",
+    title: "Professional Experience",
     isShow: false,
     list: [
       {
@@ -33,14 +41,14 @@ export const initialContent = {
   },
   3: {
     id: 3,
-    name: "Education",
+    title: "Education",
     isShow: false,
     list: [
       {
         id: 0,
         name: "New",
         school: "",
-        schoolLink: "",
+        link: "",
         city: "",
         country: "",
         start: "",
@@ -51,29 +59,28 @@ export const initialContent = {
   },
   4: {
     id: 4,
-    name: "Skills",
+    title: "Skills",
     isShow: false,
     list: [{ id: 0, name: "New" }],
   },
   5: {
     id: 5,
-    name: "Projects",
+    title: "Projects",
     isShow: false,
     list: [
       {
         id: 0,
         name: "New",
-        projectLink: "",
+        link: "",
         start: "",
         end: "",
         description: "",
-        link: "",
       },
     ],
   },
   6: {
     id: 6,
-    name: "Languages",
+    title: "Languages",
     isShow: false,
     list: [{ id: 0, name: "New" }],
   },

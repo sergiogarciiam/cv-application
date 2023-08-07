@@ -1,18 +1,19 @@
+import { getContents } from "../util/contents";
+
 function Categories({ contents, onClick }) {
   return (
     <div className="categories">
-      {Object.keys(contents).map((key) => {
-        if (!contents[key].isShow) {
+      {Object.keys(getContents).map((key) => {
+        if (!contents.hasOwnProperty(key))
           return (
             <button
-              key={contents[key].id}
-              id={contents[key].id}
+              key={getContents[key].id}
+              id={getContents[key].id}
               onClick={onClick}
             >
-              {contents[key].title}
+              {getContents[key].title}
             </button>
           );
-        }
       })}
     </div>
   );

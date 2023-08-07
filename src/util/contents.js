@@ -1,8 +1,7 @@
-export const initialContent = {
-  0: {
-    id: 0,
+export const getContents = {
+  personal: {
+    id: "personal",
     title: "Personal Details",
-    isShow: true,
     name: "",
     photo: "",
     job: "",
@@ -17,16 +16,14 @@ export const initialContent = {
       },
     ],
   },
-  1: {
-    id: 1,
+  about: {
+    id: "about",
     title: "About Me",
-    isShow: false,
     description: "",
   },
-  2: {
-    id: 2,
+  professional: {
+    id: "professional",
     title: "Professional Experience",
-    isShow: false,
     list: [
       {
         id: 0,
@@ -39,10 +36,9 @@ export const initialContent = {
       },
     ],
   },
-  3: {
-    id: 3,
+  education: {
+    id: "education",
     title: "Education",
-    isShow: false,
     list: [
       {
         id: 0,
@@ -57,16 +53,15 @@ export const initialContent = {
       },
     ],
   },
-  4: {
-    id: 4,
+  skills: {
+    id: "skills",
     title: "Skills",
     isShow: false,
     list: [{ id: 0, name: "New" }],
   },
-  5: {
-    id: 5,
+  projects: {
+    id: "projects",
     title: "Projects",
-    isShow: false,
     list: [
       {
         id: 0,
@@ -78,10 +73,9 @@ export const initialContent = {
       },
     ],
   },
-  6: {
-    id: 6,
+  languages: {
+    id: "languages",
     title: "Languages",
-    isShow: false,
     list: [{ id: 0, name: "New" }],
   },
 };

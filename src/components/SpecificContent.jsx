@@ -3,7 +3,13 @@ import Form from "./Form";
 import Edit from "../assets/images/edit.svg";
 import Trash from "../assets/images/trash.svg";
 
-function SpecificContent({ content, isActive, showContent, changeContent }) {
+function SpecificContent({
+  content,
+  isActive,
+  showContent,
+  changeContent,
+  deleteContent,
+}) {
   const changeTitle = (e) => {
     let newContent = { ...content };
     newContent.title = e.target.value;
@@ -30,7 +36,7 @@ function SpecificContent({ content, isActive, showContent, changeContent }) {
             {content.title}
           </h2>
           <img id={content.id} src={Edit} onClick={showContent}></img>
-          <img src={Trash}></img>
+          <img id={content.id} src={Trash} onClick={deleteContent}></img>
         </div>
       )}
       {isActive && (
@@ -41,7 +47,7 @@ function SpecificContent({ content, isActive, showContent, changeContent }) {
               id={content.id}
               onChange={changeTitle}
             />
-            <img src={Trash}></img>
+            <img id={content.id} src={Trash} onClick={deleteContent}></img>
           </div>
 
           <ContentDetails
@@ -76,7 +82,7 @@ function ContentDetails({ data, changeData, changeList }) {
     <div className="details">
       {data !== undefined &&
         Object.keys(data).map((key) => {
-          if (key === "id" || key === "title" || key === "isShow") return null;
+          if (key === "id" || key === "title") return null;
           else if (key === "list") {
             return (
               <FormList

@@ -2,8 +2,7 @@ function Cv({ contents }) {
   return (
     <div className="cv">
       {Object.keys(contents).map((key) => {
-        if (contents[key].isShow)
-          return <Section key={key} element={contents[key]}></Section>;
+        return <Section key={key} element={contents[key]}></Section>;
       })}
     </div>
   );
@@ -11,7 +10,7 @@ function Cv({ contents }) {
 
 function Section({ element }) {
   return Object.keys(element).map((key) => {
-    if (key === "id" || key === "isShow") return null;
+    if (key === "id") return null;
     else if (key === "title") return <h2 key={key}>{element[key]}</h2>;
     else if (key === "list")
       return <SectionList key={key} list={element[key]}></SectionList>;

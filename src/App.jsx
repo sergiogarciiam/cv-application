@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { initialContent } from "./util/content.js";
+import { getContents } from "./util/contents.js";
 
 import Categories from "./components/Categories.jsx";
 import Cv from "./components/Cv.jsx";
 import SpecificContent from "./components/SpecificContent.jsx";
 
 function App() {
-  const [contents, setContentList] = useState(initialContent);
+  const [contents, setContents] = useState({
+    personal: getContents["personal"],
+  });
   const [isCategoriesDisplay, setIsCategoriesDisplay] = useState(false);
   const [activeContent, setActiveContent] = useState("");
 
@@ -20,31 +22,36 @@ function App() {
 
   const hideCategories = (e) => {
     setIsCategoriesDisplay(false);
-    setContentList({
+    setContents({
       ...contents,
-      [e.target.id]: { ...contents[e.target.id], isShow: true },
+      [e.target.id]: getContents[e.target.id],
     });
   };
 
+  const deleteContent = (e) => {
+    let newContents = { ...contents };
+    delete newContents[e.target.id];
+    setContents(newContents);
+  };
+
   const changeContent = (newContent) => {
-    setContentList({ ...contents, [newContent.id]: newContent });
+    setContents({ ...contents, [newContent.id]: newContent });
   };
 
   return (
     <div className="page">
       <div className="contents">
         {Object.keys(contents).map((key) => {
-          if (contents[key].isShow) {
-            return (
-              <SpecificContent
-                key={contents[key].id}
-                content={contents[key]}
-                isActive={key === activeContent}
-                showContent={changeActiveContent}
-                changeContent={changeContent}
-              />
-            );
-          }
+          return (
+            <SpecificContent
+              key={contents[key].id}
+              content={contents[key]}
+              isActive={key === activeContent}
+              showContent={changeActiveContent}
+              changeContent={changeContent}
+              deleteContent={deleteContent}
+            />
+          );
         })}
 
         <button onClick={showCategories}>+ Add content</button>

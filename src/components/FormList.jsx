@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Form from "./Form";
 
-function FormList({ list, addItem, updateList }) {
+import Trash from "../assets/images/trash.svg";
+import Close from "../assets/images/close.svg";
+import DeleteMenu from "./DeleteMenu";
+
+function FormList({ list, addItem, updateList, deleteElementList }) {
   const [itemEdit, setItemEdit] = useState("");
 
   const changeItemActive = (e) => {
@@ -9,7 +13,7 @@ function FormList({ list, addItem, updateList }) {
   };
 
   return (
-    <>
+    <div className="form-list">
       {list.length > 1 &&
         list.map((object) =>
           object.id === 0 ? null : (
@@ -19,18 +23,35 @@ function FormList({ list, addItem, updateList }) {
               itemEdit={itemEdit}
               changeItemActive={changeItemActive}
               updateList={updateList}
+              deleteElementList={deleteElementList}
             />
           )
         )}
       <button onClick={addItem}>Add item</button>
-    </>
+    </div>
   );
 }
 
-function ListItem({ object, itemEdit, changeItemActive, updateList }) {
+function ListItem({
+  object,
+  itemEdit,
+  changeItemActive,
+  updateList,
+  deleteElementList,
+}) {
+  const [isDeleteMenu, setIsDeleteMenu] = useState(false);
+
+  const showDeleteMenu = () => {
+    setIsDeleteMenu(true);
+  };
+
+  const hideMenu = () => {
+    setIsDeleteMenu(false);
+  };
+
   if (object.id == itemEdit) {
     return (
-      <div key={object.id} id={object.id}>
+      <div className="list-item" key={object.id} id={object.id}>
         {Object.keys(object).map((key) => {
           if (key === "id") return null;
           return (
@@ -43,6 +64,17 @@ function ListItem({ object, itemEdit, changeItemActive, updateList }) {
             />
           );
         })}
+        <div>
+          <img id={object.id} src={Trash} onClick={showDeleteMenu}></img>
+          <img src={Close} onClick={changeItemActive}></img>
+        </div>
+        {isDeleteMenu && (
+          <DeleteMenu
+            id={object.id}
+            deleteContent={deleteElementList}
+            hideMenu={hideMenu}
+          ></DeleteMenu>
+        )}
       </div>
     );
   } else {

@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Edit from "../assets/images/edit.svg";
 import Trash from "../assets/images/trash.svg";
 import Close from "../assets/images/close.svg";
 
@@ -31,6 +30,7 @@ function SpecificContent({
 
   const changeList = (newList) => {
     let newContent = { ...content };
+    console.log(newList);
     newContent.list = newList;
     changeContent(newContent);
   };
@@ -48,24 +48,23 @@ function SpecificContent({
       {!isActive && (
         <div
           id={content.id}
-          className="specific-content"
+          className="specific-content hide"
           onClick={changeActiveContent}
         >
           <h2 id={content.id} onClick={changeActiveContent}>
             {content.title}
           </h2>
-          <img id={content.id} src={Edit} onClick={changeActiveContent}></img>
-          <img id={content.id} src={Trash} onClick={showDeleteMenu}></img>
         </div>
       )}
       {isActive && (
-        <div className="specific-content active">
-          <div>
+        <div className="specific-content">
+          <div className="specific-content-title">
             <input
               value={content.title}
               id={content.id}
               onChange={changeTitle}
             />
+            <img id={content.id} src={Trash} onClick={showDeleteMenu}></img>
             <img src={Close} onClick={changeActiveContent}></img>
           </div>
 
@@ -74,14 +73,15 @@ function SpecificContent({
             changeData={changeData}
             changeList={changeList}
           />
+
+          {isDeleteMenu && (
+            <DeleteMenu
+              id={content.id}
+              deleteContent={deleteContent}
+              hideMenu={hideMenu}
+            ></DeleteMenu>
+          )}
         </div>
-      )}
-      {isDeleteMenu && (
-        <DeleteMenu
-          id={content.id}
-          deleteContent={deleteContent}
-          hideMenu={hideMenu}
-        ></DeleteMenu>
       )}
     </>
   );
@@ -92,7 +92,7 @@ function ContentDetails({ data, changeData, changeList }) {
     const newList = [...data.list];
     newList.push({
       ...newList[0],
-      id: newList.length,
+      id: Object.keys(newList).length,
     });
 
     changeList(newList);
@@ -101,6 +101,12 @@ function ContentDetails({ data, changeData, changeList }) {
   const updateList = (e) => {
     const newList = [...data.list];
     newList[e.target.classList[0]][e.target.id] = e.target.value;
+    changeList(newList);
+  };
+
+  const deleteElementList = (e) => {
+    const newList = [...data.list];
+    delete newList[e.target.id];
     changeList(newList);
   };
 
@@ -116,6 +122,7 @@ function ContentDetails({ data, changeData, changeList }) {
                 list={data[key]}
                 addItem={addItem}
                 updateList={updateList}
+                deleteElementList={deleteElementList}
               />
             );
           } else {

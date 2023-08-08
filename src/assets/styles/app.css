@@ -1,3 +1,4 @@
+/* GENERAL */
 :root {
 }
 
@@ -20,7 +21,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .page {
@@ -30,6 +31,7 @@ button:hover {
   grid-template-columns: 1fr 1fr;
 }
 
+/* CONTENTS */
 .contents {
   display: flex;
   flex-direction: column;
@@ -38,41 +40,71 @@ button:hover {
 }
 
 .specific-content {
+  position: relative;
+
   background: #eee;
   color: #222;
   padding: 20px;
   border-radius: 50px;
-  cursor: pointer;
+  cursor: default;
 
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
-.specific-content.active {
-  cursor: default;
-  flex-direction: column;
-}
-.specific-content.active img {
-  opacity: 1;
+.specific-content.hide {
+  cursor: pointer;
 }
 
-.specific-content img:first-of-type {
-  margin-left: auto;
+.specific-content.hide:hover {
+  opacity: 0.7;
 }
-.specific-content img {
-  opacity: 0;
+
+.specific-content-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.specific-content-title img {
   cursor: pointer;
   width: 25px;
 }
 
-.specific-content:hover > img {
-  opacity: 1;
+.specific-content-title img:hover {
+  opacity: 0.7;
 }
 
+.specific-content-title img:last-of-type {
+  margin-left: auto;
+}
+
+/* details */
 .details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
+}
+
+.form-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-list > h3 {
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.form-list > button {
+  box-shadow: 0px 0px 10px #222;
+}
+
+.list-item {
+  position: relative;
 }
 
 .section {
@@ -86,7 +118,7 @@ button:hover {
   font-weight: bolder;
 }
 
-.specific-content > input,
+.specific-content input,
 .section > input,
 .specific-content > textarea,
 .section > textarea {
@@ -99,6 +131,7 @@ button:hover {
   align-self: center;
 }
 
+/* CATEGORIES */
 .categories {
   position: absolute;
   top: 50%;
@@ -122,6 +155,25 @@ button:hover {
   box-shadow: 0px 0px 10px #222;
 }
 
+/* DELETE MENU */
+.delete-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 50px;
+  border-radius: 25px;
+
+  color: #eee;
+  background-color: #222;
+}
+
+/* CV */
 .cv {
   margin: 50px;
   padding: 50px;

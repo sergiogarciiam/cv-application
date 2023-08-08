@@ -5,8 +5,7 @@ function Form({ objectId, id, data, changeData }) {
   if (type === null) type = "text";
 
   let isDescription = id === "description";
-
-  let idName = id.charAt(0).toUpperCase() + id.slice(1);
+  const idName = id.charAt(0).toUpperCase() + id.slice(1);
 
   return (
     <div className="form">

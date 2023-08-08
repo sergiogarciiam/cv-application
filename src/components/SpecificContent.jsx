@@ -90,23 +90,27 @@ function SpecificContent({
 function ContentDetails({ data, changeData, changeList }) {
   const addItem = () => {
     const newList = [...data.list];
-    newList.push({
-      ...newList[0],
-      id: Object.keys(newList).length,
-    });
+    const maxId = Math.max(...newList.map((item) => item.id), 0);
 
+    const newItem = {
+      ...newList[0],
+      id: maxId + 1,
+    };
+
+    newList.push(newItem);
     changeList(newList);
   };
 
   const updateList = (e) => {
     const newList = [...data.list];
+    console.log(e.target.classList[0]);
     newList[e.target.classList[0]][e.target.id] = e.target.value;
     changeList(newList);
   };
 
   const deleteElementList = (e) => {
     const newList = [...data.list];
-    delete newList[e.target.id];
+    newList.splice(e.target.id, 1);
     changeList(newList);
   };
 

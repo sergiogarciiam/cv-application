@@ -1,32 +1,35 @@
 function Cv({ contents }) {
   return (
     <div className="cv">
-      {Object.keys(contents).map((key) => {
-        return <Section key={key} name={key} element={contents[key]}></Section>;
-      })}
+      {Object.keys(contents).map((key) => (
+        <Section key={key} name={key} element={contents[key]} />
+      ))}
     </div>
   );
 }
 
 function Section({ name, element }) {
   return (
-    <div className={name}>
+    <div className={`section-${name}`}>
       {Object.keys(element).map((key) => {
-        if (element[key] === "" || key === "id") return null;
-        else if (key === "title")
+        const value = element[key];
+        if (value === "" || key === "id") {
+          return null;
+        } else if (key === "title") {
           return (
-            <h2 key={key} className={key}>
-              {element[key]}
+            <h2 key={key} className={`section-${key}`}>
+              {value}
             </h2>
           );
-        else if (key === "list")
-          return <SectionList key={key} list={element[key]}></SectionList>;
-        else
+        } else if (key === "list") {
+          return <SectionList key={key} list={value} />;
+        } else {
           return (
-            <p key={key} className={key}>
-              {element[key]}
+            <p key={key} className={`section-${key}`}>
+              {value}
             </p>
           );
+        }
       })}
     </div>
   );
@@ -35,38 +38,36 @@ function Section({ name, element }) {
 function SectionList({ list }) {
   return (
     <div className="list">
-      {list.map((object) => {
-        return Object.keys(object).map((key) => {
-          if (
-            object[key] === "" ||
-            key === "id" ||
-            key === "link" ||
-            object.id === 0
-          )
-            return null;
-          else if (key === "name" && !object.hasOwnProperty("link"))
-            return (
-              <h4 key={key} className={key}>
-                {object[key]}
-              </h4>
-            );
-          else if (key === "name" && object.hasOwnProperty("link"))
-            return (
-              <>
-                <a href={object.link} target="__blank">
-                  {object[key]}
-                </a>{" "}
-                <br></br>
-              </>
-            );
-          else
-            return (
-              <p key={key} className={key}>
-                {object[key]}
-              </p>
-            );
-        });
-      })}{" "}
+      {list.map((object, index) => (
+        <SectionListItem key={object.id || index} object={object} />
+      ))}
+    </div>
+  );
+}
+
+function SectionListItem({ object }) {
+  const { id, link, name, ...rest } = object;
+
+  if (id === 0 || link === "") {
+    return null;
+  }
+
+  const isLinked = link && name;
+
+  return (
+    <div className="list-item">
+      {isLinked ? (
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          {name}
+        </a>
+      ) : (
+        <h4>{name}</h4>
+      )}
+      {Object.keys(rest).map((key) => (
+        <p key={key} className={`list-item-${key}`}>
+          {rest[key]}
+        </p>
+      ))}
     </div>
   );
 }

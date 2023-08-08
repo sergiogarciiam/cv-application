@@ -21,9 +21,9 @@ export const getContents = {
     title: "About Me",
     description: "",
   },
-  professional: {
-    id: "professional",
-    title: "Professional Experience",
+  roles: {
+    id: "roles",
+    title: "Roles",
     list: [
       {
         id: 0,
@@ -36,9 +36,9 @@ export const getContents = {
       },
     ],
   },
-  education: {
-    id: "education",
-    title: "Education",
+  educations: {
+    id: "educations",
+    title: "Educations",
     list: [
       {
         id: 0,

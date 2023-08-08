@@ -6,6 +6,11 @@ import Close from "../assets/images/close.svg";
 import DeleteMenu from "./DeleteMenu";
 
 function FormList({ dataId, list, addItem, updateList, deleteElementList }) {
+  const idName =
+    dataId === "personal"
+      ? "Links"
+      : dataId.charAt(0).toUpperCase() + dataId.slice(1);
+
   const [itemEdit, setItemEdit] = useState(null);
 
   const changeItemActive = (e) => {
@@ -15,7 +20,7 @@ function FormList({ dataId, list, addItem, updateList, deleteElementList }) {
   return (
     <>
       <div className="forms-list">
-        <p>{dataId} List</p>
+        <p>{idName} List</p>
         {list.length > 1 &&
           list.map((object) =>
             object.id === 0 ? null : (
@@ -27,10 +32,11 @@ function FormList({ dataId, list, addItem, updateList, deleteElementList }) {
         <button onClick={addItem}>Add item</button>
       </div>
       {list.length > 1 &&
-        list.map((object) =>
+        list.map((object, index) =>
           object.id == itemEdit ? (
             <EditListItem
               key={object.id}
+              objectId={index}
               object={object}
               changeItemActive={changeItemActive}
               updateList={updateList}
@@ -44,6 +50,7 @@ function FormList({ dataId, list, addItem, updateList, deleteElementList }) {
 
 function EditListItem({
   object,
+  objectId,
   changeItemActive,
   updateList,
   deleteElementList,
@@ -65,7 +72,7 @@ function EditListItem({
         return (
           <Form
             key={key}
-            objectId={object.id}
+            objectId={objectId}
             id={key}
             data={object[key]}
             changeData={updateList}

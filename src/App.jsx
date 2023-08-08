@@ -4,10 +4,11 @@ import { getContents } from "./util/contents.js";
 import Categories from "./components/Categories.jsx";
 import Cv from "./components/Cv.jsx";
 import SpecificContent from "./components/SpecificContent.jsx";
+import { getID } from "./util/getFunctions.js";
 
 function App() {
   const [contents, setContents] = useState({
-    personal: getContents["personal"],
+    0: getContents[0],
   });
   const [isCategoriesDisplay, setIsCategoriesDisplay] = useState(false);
   const [activeContent, setActiveContent] = useState("");
@@ -25,9 +26,10 @@ function App() {
   };
 
   const addContent = (e) => {
+    const id = getID[e.target.id];
     setContents({
       ...contents,
-      [e.target.id]: getContents[e.target.id],
+      [id]: getContents[id],
     });
   };
 
@@ -38,7 +40,8 @@ function App() {
   };
 
   const changeContent = (newContent) => {
-    setContents({ ...contents, [newContent.id]: newContent });
+    const id = getID[newContent.id];
+    setContents({ ...contents, [id]: newContent });
   };
 
   return (
@@ -49,7 +52,7 @@ function App() {
             <SpecificContent
               key={contents[key].id}
               content={contents[key]}
-              isActive={key === activeContent}
+              isActive={contents[key].id === activeContent}
               changeActiveContent={changeActiveContent}
               changeContent={changeContent}
               deleteContent={deleteContent}

@@ -1,5 +1,5 @@
 export const getContents = {
-  personal: {
+  0: {
     id: "personal",
     title: "Personal Details",
     name: "",
@@ -16,12 +16,12 @@ export const getContents = {
       },
     ],
   },
-  about: {
+  1: {
     id: "about",
     title: "About Me",
     description: "",
   },
-  roles: {
+  2: {
     id: "roles",
     title: "Roles",
     list: [
@@ -36,8 +36,8 @@ export const getContents = {
       },
     ],
   },
-  educations: {
-    id: "educations",
+  3: {
+    id: "education",
     title: "Educations",
     list: [
       {
@@ -53,12 +53,7 @@ export const getContents = {
       },
     ],
   },
-  skills: {
-    id: "skills",
-    title: "Skills",
-    list: [{ id: 0, name: "New Skill" }],
-  },
-  projects: {
+  4: {
     id: "projects",
     title: "Projects",
     list: [
@@ -72,7 +67,13 @@ export const getContents = {
       },
     ],
   },
-  languages: {
+  5: {
+    id: "skills",
+    title: "Skills",
+    list: [{ id: 0, name: "New Skill" }],
+  },
+
+  6: {
     id: "languages",
     title: "Languages",
     list: [{ id: 0, name: "New Language" }],

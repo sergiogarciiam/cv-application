@@ -1,4 +1,4 @@
-import { getInputType } from "../util/inputType";
+import { getInputType } from "../util/getFunctions";
 
 function Form({ objectId, id, data, changeData }) {
   let type = getInputType[id];

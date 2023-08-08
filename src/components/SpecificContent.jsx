@@ -30,7 +30,6 @@ function SpecificContent({
 
   const changeList = (newList) => {
     let newContent = { ...content };
-    console.log(newList);
     newContent.list = newList;
     changeContent(newContent);
   };

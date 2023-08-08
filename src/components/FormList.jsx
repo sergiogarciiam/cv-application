@@ -9,8 +9,7 @@ function FormList({ dataId, list, addItem, updateList, deleteElementList }) {
   const [itemEdit, setItemEdit] = useState(null);
 
   const changeItemActive = (e) => {
-    if (e.target.id === "") setItemEdit(null);
-    else setItemEdit(e.target.id);
+    setItemEdit(e.target.id || null);
   };
 
   return (

@@ -5,7 +5,7 @@ import Trash from "../assets/images/trash.svg";
 import Close from "../assets/images/close.svg";
 import DeleteMenu from "./DeleteMenu";
 
-function FormList({ list, addItem, updateList, deleteElementList }) {
+function FormList({ dataId, list, addItem, updateList, deleteElementList }) {
   const [itemEdit, setItemEdit] = useState(null);
 
   const changeItemActive = (e) => {
@@ -15,7 +15,8 @@ function FormList({ list, addItem, updateList, deleteElementList }) {
 
   return (
     <>
-      <div className="form-list">
+      <div className="forms-list">
+        <p>{dataId} List</p>
         {list.length > 1 &&
           list.map((object) =>
             object.id === 0 ? null : (
@@ -29,7 +30,7 @@ function FormList({ list, addItem, updateList, deleteElementList }) {
       {list.length > 1 &&
         list.map((object) =>
           object.id == itemEdit ? (
-            <ListItem
+            <EditListItem
               key={object.id}
               object={object}
               changeItemActive={changeItemActive}
@@ -42,7 +43,12 @@ function FormList({ list, addItem, updateList, deleteElementList }) {
   );
 }
 
-function ListItem({ object, changeItemActive, updateList, deleteElementList }) {
+function EditListItem({
+  object,
+  changeItemActive,
+  updateList,
+  deleteElementList,
+}) {
   const [isDeleteMenu, setIsDeleteMenu] = useState(false);
 
   const showDeleteMenu = () => {
@@ -54,7 +60,7 @@ function ListItem({ object, changeItemActive, updateList, deleteElementList }) {
   };
 
   return (
-    <div className="list-item" key={object.id} id={object.id}>
+    <div className="edit-list-item" key={object.id} id={object.id}>
       {Object.keys(object).map((key) => {
         if (key === "id") return null;
         return (
@@ -67,7 +73,7 @@ function ListItem({ object, changeItemActive, updateList, deleteElementList }) {
           />
         );
       })}
-      <div>
+      <div className="edit-list-item-images">
         <img id={object.id} src={Trash} onClick={showDeleteMenu}></img>
         <img src={Close} onClick={changeItemActive}></img>
       </div>

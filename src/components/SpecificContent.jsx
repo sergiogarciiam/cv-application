@@ -58,7 +58,7 @@ function SpecificContent({
       )}
       {isActive && (
         <div className="specific-content">
-          <div className="specific-content-title">
+          <div className="specific-content-title-container">
             <input
               value={content.title}
               id={content.id}
@@ -111,7 +111,7 @@ function ContentDetails({ data, changeData, changeList }) {
   };
 
   return (
-    <div className="details">
+    <div className="specific-content-details-container">
       {data !== undefined &&
         Object.keys(data).map((key) => {
           if (key === "id" || key === "title") return null;
@@ -119,6 +119,7 @@ function ContentDetails({ data, changeData, changeList }) {
             return (
               <FormList
                 key={key}
+                dataId={data.id}
                 list={data[key]}
                 addItem={addItem}
                 updateList={updateList}

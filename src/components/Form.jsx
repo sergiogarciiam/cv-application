@@ -9,7 +9,7 @@ function Form({ objectId, id, data, changeData }) {
   let idName = id.charAt(0).toUpperCase() + id.slice(1);
 
   return (
-    <div className="section">
+    <div className="form">
       <label>{idName}</label>
       {!isDescription && (
         <input

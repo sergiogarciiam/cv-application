@@ -31,14 +31,19 @@ button:hover {
   grid-template-columns: 1fr 1fr;
 }
 
-/* CONTENTS */
-.contents {
+/* CONTENTS SELECTION */
+.contents-selection {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin: 50px;
 }
 
+.contents-selection > button {
+  align-self: center;
+}
+
+/* SPECIFIC CONTENT*/
 .specific-content {
   position: relative;
 
@@ -61,74 +66,84 @@ button:hover {
   opacity: 0.7;
 }
 
-.specific-content-title {
+.specific-content-title-container {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.specific-content-title img {
+.specific-content input,
+.specific-content textarea {
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.specific-content textarea {
+  resize: none;
+  height: 100px;
+}
+
+.specific-content img {
   cursor: pointer;
   width: 25px;
 }
 
-.specific-content-title img:hover {
+.specific-content img:hover {
   opacity: 0.7;
 }
 
-.specific-content-title img:last-of-type {
+.specific-content-title-container img:last-of-type {
   margin-left: auto;
 }
 
-/* details */
-.details {
+.specific-content-details-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
 }
 
-.form-list {
+/* FORMS LIST */
+.forms-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.form-list > h3 {
+.forms-list > p {
+  font-weight: bolder;
+}
+
+.forms-list > h3 {
   padding: 10px;
   background-color: #fff;
   cursor: pointer;
 }
 
-.form-list > button {
+.forms-list > button {
   box-shadow: 0px 0px 10px #222;
 }
 
-.list-item {
+.edit-list-item {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.section {
+.edit-list-item-images {
+  align-self: flex-end;
+}
+
+/* FORM */
+.form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
 }
 
-.section > label {
+.form > label {
   font-weight: bolder;
-}
-
-.specific-content input,
-.section > input,
-.specific-content > textarea,
-.section > textarea {
-  padding: 5px;
-  border-radius: 25px;
-  resize: none;
-}
-
-.contents > button {
-  align-self: center;
 }
 
 /* CATEGORIES */

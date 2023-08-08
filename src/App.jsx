@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div className="page">
-      <div className="contents">
+      <div className="contents-selection">
         {Object.keys(contents).map((key) => {
           return (
             <SpecificContent

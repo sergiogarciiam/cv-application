@@ -11,7 +11,7 @@ export const getContents = {
     list: [
       {
         id: 0,
-        name: "New",
+        name: "New Link",
         link: "",
       },
     ],
@@ -27,7 +27,7 @@ export const getContents = {
     list: [
       {
         id: 0,
-        name: "New",
+        name: "New Professional Experience",
         city: "",
         country: "",
         start: "",
@@ -42,7 +42,7 @@ export const getContents = {
     list: [
       {
         id: 0,
-        name: "New",
+        name: "New Education",
         school: "",
         link: "",
         city: "",
@@ -56,7 +56,7 @@ export const getContents = {
   skills: {
     id: "skills",
     title: "Skills",
-    list: [{ id: 0, name: "New" }],
+    list: [{ id: 0, name: "New Skill" }],
   },
   projects: {
     id: "projects",
@@ -64,7 +64,7 @@ export const getContents = {
     list: [
       {
         id: 0,
-        name: "New",
+        name: "New Project",
         link: "",
         start: "",
         end: "",
@@ -75,6 +75,6 @@ export const getContents = {
   languages: {
     id: "languages",
     title: "Languages",
-    list: [{ id: 0, name: "New" }],
+    list: [{ id: 0, name: "New Language" }],
   },
 };

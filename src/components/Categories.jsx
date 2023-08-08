@@ -1,6 +1,11 @@
 import { getContents } from "../util/contents";
 
-function Categories({ contents, onClick }) {
+function Categories({ contents, hideCategories, addContent }) {
+  const addNewContent = (e) => {
+    hideCategories();
+    addContent(e);
+  };
+
   return (
     <div className="categories">
       {Object.keys(getContents).map((key) => {
@@ -9,12 +14,13 @@ function Categories({ contents, onClick }) {
             <button
               key={getContents[key].id}
               id={getContents[key].id}
-              onClick={onClick}
+              onClick={addNewContent}
             >
               {getContents[key].title}
             </button>
           );
       })}
+      <button onClick={hideCategories}>Go Back</button>
     </div>
   );
 }

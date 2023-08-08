@@ -1,11 +1,11 @@
-function DeleteMenu({ id, deleteContent, hideMenu }) {
+function DeleteMenu({ id, deleteContent, hideDeleteMenu }) {
   return (
     <div className="delete-menu">
       <p>Are you sure?</p>
       <button id={id} onClick={deleteContent}>
         Yes
       </button>
-      <button onClick={hideMenu}>No</button>
+      <button onClick={hideDeleteMenu}>No</button>
     </div>
   );
 }

@@ -39,7 +39,7 @@ function SpecificContent({
     setIsDeleteMenu(true);
   };
 
-  const hideMenu = () => {
+  const hideDeleteMenu = () => {
     setIsDeleteMenu(false);
   };
 
@@ -78,7 +78,7 @@ function SpecificContent({
             <DeleteMenu
               id={content.id}
               deleteContent={deleteContent}
-              hideMenu={hideMenu}
+              hideDeleteMenu={hideDeleteMenu}
             ></DeleteMenu>
           )}
         </div>

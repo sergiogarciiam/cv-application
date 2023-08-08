@@ -20,8 +20,11 @@ function App() {
     setActiveContent(e.target.id);
   };
 
-  const hideCategories = (e) => {
+  const hideCategories = () => {
     setIsCategoriesDisplay(false);
+  };
+
+  const addContent = (e) => {
     setContents({
       ...contents,
       [e.target.id]: getContents[e.target.id],
@@ -58,7 +61,11 @@ function App() {
       </div>
 
       {isCategoriesDisplay && (
-        <Categories contents={contents} onClick={hideCategories} />
+        <Categories
+          contents={contents}
+          hideCategories={hideCategories}
+          addContent={addContent}
+        />
       )}
 
       <Cv contents={contents}></Cv>

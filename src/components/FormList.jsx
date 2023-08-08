@@ -6,84 +6,80 @@ import Close from "../assets/images/close.svg";
 import DeleteMenu from "./DeleteMenu";
 
 function FormList({ list, addItem, updateList, deleteElementList }) {
-  const [itemEdit, setItemEdit] = useState("");
+  const [itemEdit, setItemEdit] = useState(null);
 
   const changeItemActive = (e) => {
-    setItemEdit(e.target.id);
+    if (e.target.id === "") setItemEdit(null);
+    else setItemEdit(e.target.id);
   };
 
   return (
-    <div className="form-list">
+    <>
+      <div className="form-list">
+        {list.length > 1 &&
+          list.map((object) =>
+            object.id === 0 ? null : (
+              <h3 key={object.id} id={object.id} onClick={changeItemActive}>
+                {object.name}
+              </h3>
+            )
+          )}
+        <button onClick={addItem}>Add item</button>
+      </div>
       {list.length > 1 &&
         list.map((object) =>
-          object.id === 0 ? null : (
+          object.id == itemEdit ? (
             <ListItem
               key={object.id}
               object={object}
-              itemEdit={itemEdit}
               changeItemActive={changeItemActive}
               updateList={updateList}
               deleteElementList={deleteElementList}
             />
-          )
+          ) : null
         )}
-      <button onClick={addItem}>Add item</button>
-    </div>
+    </>
   );
 }
 
-function ListItem({
-  object,
-  itemEdit,
-  changeItemActive,
-  updateList,
-  deleteElementList,
-}) {
+function ListItem({ object, changeItemActive, updateList, deleteElementList }) {
   const [isDeleteMenu, setIsDeleteMenu] = useState(false);
 
   const showDeleteMenu = () => {
     setIsDeleteMenu(true);
   };
 
-  const hideMenu = () => {
+  const hideDeleteMenu = () => {
     setIsDeleteMenu(false);
   };
 
-  if (object.id == itemEdit) {
-    return (
-      <div className="list-item" key={object.id} id={object.id}>
-        {Object.keys(object).map((key) => {
-          if (key === "id") return null;
-          return (
-            <Form
-              key={key}
-              objectId={object.id}
-              id={key}
-              data={object[key]}
-              changeData={updateList}
-            />
-          );
-        })}
-        <div>
-          <img id={object.id} src={Trash} onClick={showDeleteMenu}></img>
-          <img src={Close} onClick={changeItemActive}></img>
-        </div>
-        {isDeleteMenu && (
-          <DeleteMenu
-            id={object.id}
-            deleteContent={deleteElementList}
-            hideMenu={hideMenu}
-          ></DeleteMenu>
-        )}
+  return (
+    <div className="list-item" key={object.id} id={object.id}>
+      {Object.keys(object).map((key) => {
+        if (key === "id") return null;
+        return (
+          <Form
+            key={key}
+            objectId={object.id}
+            id={key}
+            data={object[key]}
+            changeData={updateList}
+          />
+        );
+      })}
+      <div>
+        <img id={object.id} src={Trash} onClick={showDeleteMenu}></img>
+        <img src={Close} onClick={changeItemActive}></img>
       </div>
-    );
-  } else {
-    return (
-      <h3 key={object.id} id={object.id} onClick={changeItemActive}>
-        {object.name}
-      </h3>
-    );
-  }
+      {isDeleteMenu && (
+        <DeleteMenu
+          id={object.id}
+          deleteContent={deleteElementList}
+          hideDeleteMenu={hideDeleteMenu}
+        ></DeleteMenu>
+      )}
+    </div>
+  );
 }
 
 export default FormList;

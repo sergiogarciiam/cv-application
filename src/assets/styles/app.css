@@ -138,7 +138,8 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -90%);
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
@@ -153,6 +154,11 @@ button:hover {
 
 .categories > button {
   box-shadow: 0px 0px 10px #222;
+}
+
+.categories > button:last-of-type {
+  color: #eee;
+  background-color: #222;
 }
 
 /* DELETE MENU */
@@ -179,6 +185,11 @@ button:hover {
   padding: 50px;
 
   height: 1000px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 
   background-color: #fff;
   color: #222;

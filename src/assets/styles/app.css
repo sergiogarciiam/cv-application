@@ -193,19 +193,3 @@ button:hover {
   color: #eee;
   background-color: #222;
 }
-
-/* CV */
-.cv {
-  margin: 50px;
-  padding: 50px;
-
-  height: 1000px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-
-  background-color: #fff;
-  color: #222;
-}

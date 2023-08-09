@@ -37,11 +37,11 @@ function Section({ name, element }) {
 
 function SectionList({ list }) {
   return (
-    <div className="list">
+    <>
       {list.map((object, index) => (
         <SectionListItem key={object.id || index} object={object} />
       ))}
-    </div>
+    </>
   );
 }
 
@@ -61,7 +61,7 @@ function SectionListItem({ object }) {
           {name}
         </a>
       ) : (
-        <h4>{name}</h4>
+        <p className="list-item-name">{name}</p>
       )}
       {Object.keys(rest).map((key) => (
         <p key={key} className={`list-item-${key}`}>

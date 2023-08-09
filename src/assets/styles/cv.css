@@ -1,0 +1,81 @@
+.cv {
+  margin: 50px;
+  padding: 50px;
+
+  height: 1000px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background-color: #fff;
+  color: #222;
+}
+
+.section-0 {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.section-0 .section-title {
+  display: none;
+}
+
+.section-0 .section-name {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.section-0 .section-job {
+  font-size: 1.3rem;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 2px solid #222;
+  margin-bottom: 5px;
+}
+
+.section-2 .list-item,
+.section-3 .list-item {
+  display: grid;
+  display: grid;
+  grid-template-columns: 1fr 0.15fr 0.15fr;
+  grid-template-areas: "name start end" "sub-name  place place";
+}
+
+.section-2 .list-item-name,
+.section-3 .list-item-name,
+.section-4 .list-item-name {
+  font-weight: bolder;
+  grid-area: name;
+}
+
+.section-2 .list-item-employer,
+.section-3 .list-item-school {
+  font-style: italic;
+  grid-area: sub-name;
+}
+
+.section-2 .list-item-place,
+.section-3 .list-item-place {
+  grid-area: place;
+}
+
+.section-2 .list-item-start,
+.section-3 .list-item-start {
+  grid-area: start;
+}
+
+.section-2 .list-item-start::after,
+.section-3 .list-item-start::after {
+  content: ",";
+}
+
+.section-2 .list-item-end,
+.section-3 .list-item-end {
+  grid-area: end;
+}

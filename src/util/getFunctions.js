@@ -3,7 +3,6 @@ export const getInputType = {
   end: "date",
   phone: "number",
   link: "url",
-  photo: "image",
 };
 
 export const getID = {

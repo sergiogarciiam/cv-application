@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { getContents } from "./util/contents.js";
-
+import { getID } from "./util/getFunctions.js";
 import Categories from "./components/Categories.jsx";
 import Cv from "./components/Cv.jsx";
 import SpecificContent from "./components/SpecificContent.jsx";
-import { getID } from "./util/getFunctions.js";
 
 function App() {
   // GET FROM STORAGE
@@ -21,18 +20,6 @@ function App() {
   // FUNCTIONS
   const toggleCv = () => {
     setIsCvZoom(!isCvZoom);
-  };
-
-  const showCategories = () => {
-    setIsCategoriesDisplay(true);
-  };
-
-  const changeActiveContent = (e) => {
-    setActiveContent(e.target.id);
-  };
-
-  const hideCategories = () => {
-    setIsCategoriesDisplay(false);
   };
 
   const addContent = (e) => {
@@ -55,12 +42,24 @@ function App() {
     setContents({ ...contents, [id]: newContent });
   };
 
+  const showCategories = () => {
+    setIsCategoriesDisplay(true);
+  };
+
+  const hideCategories = () => {
+    setIsCategoriesDisplay(false);
+  };
+
+  const changeActiveContent = (e) => {
+    setActiveContent(e.target.id);
+  };
+
   // LOAD TO STORAGE
   useEffect(() => {
     localStorage.setItem("contents", JSON.stringify(contents));
   }, [contents]);
 
-  // RETURN
+  // RENDER
   return (
     <div className="page">
       <div className="contents-selection">
@@ -79,6 +78,7 @@ function App() {
 
         <button onClick={showCategories}>+ Add content</button>
       </div>
+
       {isCategoriesDisplay && (
         <Categories
           contents={contents}
@@ -86,11 +86,14 @@ function App() {
           addContent={addContent}
         />
       )}
-      {isCvZoom && <div className="blocker"></div>}
 
       <Cv contents={contents} toggleCv={toggleCv}></Cv>
+
       {isCvZoom && (
-        <Cv contents={contents} toggleCv={toggleCv} zoom="zoom"></Cv>
+        <>
+          <div className="blocker"></div>
+          <Cv contents={contents} toggleCv={toggleCv} zoom="zoom"></Cv>
+        </>
       )}
     </div>
   );

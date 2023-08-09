@@ -1,0 +1,47 @@
+/* CATEGORIES */
+.categories {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 500px;
+  padding: 50px;
+  border-radius: 50px;
+
+  background-color: #eee;
+  box-shadow: 0px 0px 10px #222;
+}
+
+.categories > button {
+  box-shadow: 0px 0px 10px #222;
+}
+
+.categories > button:last-of-type {
+  color: #eee;
+  background-color: #222;
+}
+
+/* DELETE MENU */
+.delete-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 50px;
+  border-radius: 25px;
+
+  color: #eee;
+  background-color: #222;
+}

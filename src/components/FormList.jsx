@@ -1,14 +1,14 @@
 import { useState } from "react";
 import Form from "./Form";
-
+import DeleteMenu from "./DeleteMenu";
 import Trash from "../assets/images/trash.svg";
 import Close from "../assets/images/close.svg";
-import DeleteMenu from "./DeleteMenu";
+import { LINKS, PERSONAL } from "../util/constants";
 
 function FormList({ dataId, list, addItem, updateList, deleteElementList }) {
   const idName =
-    dataId === "personal"
-      ? "Links"
+    dataId === PERSONAL
+      ? LINKS
       : dataId.charAt(0).toUpperCase() + dataId.slice(1);
 
   const [itemEdit, setItemEdit] = useState(null);

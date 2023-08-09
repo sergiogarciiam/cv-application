@@ -1,3 +1,13 @@
+import {
+  EMPTY,
+  GITHUB,
+  ID,
+  LINKEDIN,
+  LIST,
+  TITLE,
+  WEBSITE,
+} from "../util/constants";
+
 const CVContainer = ({ contents, toggleCv, zoom = "" }) => {
   return (
     <div className={`cv ${zoom}`} onClick={toggleCv}>
@@ -14,11 +24,11 @@ const CVSection = ({ name, element }) => {
       {Object.keys(element).map((key) => {
         const value = element[key];
 
-        if (value === "" || key === "id") {
+        if (value === EMPTY || key === ID) {
           return null;
         }
 
-        if (key === "title") {
+        if (key === TITLE) {
           return (
             <h2 key={key} className={`section-${key}`}>
               {value}
@@ -26,11 +36,11 @@ const CVSection = ({ name, element }) => {
           );
         }
 
-        if (key === "website" || key === "github" || key === "linkedin") {
+        if (key === WEBSITE || key === GITHUB || key === LINKEDIN) {
           return createLink(key, value);
         }
 
-        if (key === "list") {
+        if (key === LIST) {
           return <SectionList key={key} list={value} />;
         }
 
@@ -81,10 +91,9 @@ const SectionListItem = ({ object }) => {
   );
 };
 
-// Utility function to create anchor elements
 const createLink = (key, element) => {
   const url =
-    key === "github"
+    key === GITHUB
       ? `https://${key}.com/${element}`
       : `https://${key}.com/in/${element}`;
   return (

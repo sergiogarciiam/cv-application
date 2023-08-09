@@ -1,0 +1,43 @@
+/* FORMS LIST */
+.forms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.forms-list > p {
+  font-weight: bolder;
+}
+
+.forms-list > h3 {
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.forms-list > button {
+  box-shadow: 0px 0px 10px #222;
+}
+
+.edit-list-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edit-list-item-images {
+  align-self: flex-end;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.form > label {
+  font-weight: bolder;
+}

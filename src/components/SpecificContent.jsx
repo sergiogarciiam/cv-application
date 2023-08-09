@@ -1,11 +1,9 @@
 import { useState } from "react";
-
-import Trash from "../assets/images/trash.svg";
-import Close from "../assets/images/close.svg";
-
 import FormList from "./FormList";
 import Form from "./Form";
 import DeleteMenu from "./DeleteMenu";
+import Trash from "../assets/images/trash.svg";
+import Close from "../assets/images/close.svg";
 
 function SpecificContent({
   content,

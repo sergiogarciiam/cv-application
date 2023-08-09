@@ -1,8 +1,10 @@
+/* CV */
 .cv {
   margin: 50px;
   padding: 50px;
 
   height: 1200px;
+  min-width: 900px;
 
   display: flex;
   flex-direction: column;
@@ -32,6 +34,7 @@
   z-index: 1;
 }
 
+/* PERSONAL DETAILS */
 .section-0 {
   display: flex;
   align-items: flex-end;
@@ -59,6 +62,7 @@
   color: #111;
 }
 
+/* OTHER SECTIONS */
 .section-title {
   font-size: 1.2rem;
   font-weight: bold;

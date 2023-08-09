@@ -10,13 +10,6 @@ export const getContents = {
     website: "",
     linkedin: "",
     github: "",
-    list: [
-      {
-        id: 0,
-        name: "New Link",
-        link: "",
-      },
-    ],
   },
   1: {
     id: "about",

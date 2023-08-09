@@ -26,7 +26,6 @@ button:hover {
 
 .page {
   position: relative;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -149,9 +148,9 @@ button:hover {
 /* CATEGORIES */
 .categories {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -90%);
+  transform: translate(-50%, 100%);
 
   display: grid;
   grid-template-columns: 1fr 1fr;

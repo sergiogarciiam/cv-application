@@ -1,0 +1,25 @@
+@media screen and (max-width: 1200px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .cv {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .specific-content-details-container {
+    grid-template-columns: 1fr;
+  }
+
+  .categories {
+    top: 0%;
+    transform: translate(-50%, 50%);
+    width: 350px;
+  }
+
+  .specific-content input:first-child {
+    width: 150px;
+  }
+}

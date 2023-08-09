@@ -2,7 +2,7 @@
   margin: 50px;
   padding: 50px;
 
-  height: 1000px;
+  height: 1200px;
 
   display: flex;
   flex-direction: column;
@@ -13,10 +13,12 @@
 }
 
 .section-0 {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  align-items: center;
-  gap: 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: start;
+
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .section-0 .section-title {
@@ -30,6 +32,11 @@
 
 .section-0 .section-job {
   font-size: 1.3rem;
+  grid-area: job;
+}
+
+.section-0 a {
+  color: #111;
 }
 
 .section-title {
@@ -37,6 +44,10 @@
   font-weight: bold;
   border-bottom: 2px solid #222;
   margin-bottom: 5px;
+}
+
+.list-item {
+  margin-bottom: 20px;
 }
 
 .section-2 .list-item,

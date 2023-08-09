@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getContents } from "./util/contents.js";
 
 import Categories from "./components/Categories.jsx";
@@ -7,12 +7,17 @@ import SpecificContent from "./components/SpecificContent.jsx";
 import { getID } from "./util/getFunctions.js";
 
 function App() {
-  const [contents, setContents] = useState({
+  // GET FROM STORAGE
+  const initialContents = JSON.parse(localStorage.getItem("contents")) || {
     0: getContents[0],
-  });
+  };
+
+  // STATES
+  const [contents, setContents] = useState(initialContents);
   const [isCategoriesDisplay, setIsCategoriesDisplay] = useState(false);
   const [activeContent, setActiveContent] = useState("");
 
+  // FUNCTIONS
   const showCategories = () => {
     setIsCategoriesDisplay(true);
   };
@@ -44,6 +49,12 @@ function App() {
     setContents({ ...contents, [id]: newContent });
   };
 
+  // LOAD TO STORAGE
+  useEffect(() => {
+    localStorage.setItem("contents", JSON.stringify(contents));
+  }, [contents]);
+
+  // RETURN
   return (
     <div className="page">
       <div className="contents-selection">

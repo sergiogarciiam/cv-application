@@ -40,7 +40,8 @@ function App() {
 
   const deleteContent = (e) => {
     let newContents = { ...contents };
-    delete newContents[e.target.id];
+    const id = getID[e.target.id];
+    delete newContents[id];
     setContents(newContents);
   };
 

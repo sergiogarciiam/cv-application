@@ -1,41 +1,40 @@
-function Cv({ contents }) {
-  return (
-    <div className="cv">
-      {Object.keys(contents).map((key) => (
-        <Section key={key} name={key} element={contents[key]} />
-      ))}
-    </div>
-  );
-}
-
-function Section({ name, element }) {
+const CVSection = ({ name, element }) => {
   return (
     <div className={`section-${name}`}>
       {Object.keys(element).map((key) => {
         const value = element[key];
+
         if (value === "" || key === "id") {
           return null;
-        } else if (key === "title") {
+        }
+
+        if (key === "title") {
           return (
             <h2 key={key} className={`section-${key}`}>
               {value}
             </h2>
           );
-        } else if (key === "list") {
-          return <SectionList key={key} list={value} />;
-        } else {
-          return (
-            <p key={key} className={`section-${key}`}>
-              {value}
-            </p>
-          );
         }
+
+        if (key === "website" || key === "github" || key === "linkedin") {
+          return createLink(key, value);
+        }
+
+        if (key === "list") {
+          return <SectionList key={key} list={value} />;
+        }
+
+        return (
+          <p key={key} className={`section-${key}`}>
+            {value}
+          </p>
+        );
       })}
     </div>
   );
-}
+};
 
-function SectionList({ list }) {
+const SectionList = ({ list }) => {
   return (
     <>
       {list.map((object, index) => (
@@ -43,9 +42,9 @@ function SectionList({ list }) {
       ))}
     </>
   );
-}
+};
 
-function SectionListItem({ object }) {
+const SectionListItem = ({ object }) => {
   const { id, link, name, ...rest } = object;
 
   if (id === 0 || link === "") {
@@ -70,6 +69,35 @@ function SectionListItem({ object }) {
       ))}
     </div>
   );
-}
+};
 
-export default Cv;
+const CVContainer = ({ contents }) => {
+  return (
+    <div className="cv">
+      {Object.keys(contents).map((key) => (
+        <CVSection key={key} name={key} element={contents[key]} />
+      ))}
+    </div>
+  );
+};
+
+// Utility function to create anchor elements
+const createLink = (key, element) => {
+  const url =
+    key === "github"
+      ? `https://${key}.com/${element}`
+      : `https://${key}.com/in/${element}`;
+  return (
+    <a
+      key={key}
+      className={`section-${key}`}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {element}
+    </a>
+  );
+};
+
+export default CVContainer;

@@ -7,6 +7,9 @@ export const getContents = {
     address: "",
     email: "",
     phone: "",
+    website: "",
+    linkedin: "",
+    github: "",
     list: [
       {
         id: 0,

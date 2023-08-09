@@ -1,3 +1,13 @@
+const CVContainer = ({ contents, toggleCv, zoom = "" }) => {
+  return (
+    <div className={`cv ${zoom}`} onClick={toggleCv}>
+      {Object.keys(contents).map((key) => (
+        <CVSection key={key} name={key} element={contents[key]} />
+      ))}
+    </div>
+  );
+};
+
 const CVSection = ({ name, element }) => {
   return (
     <div className={`section-${name}`}>
@@ -66,16 +76,6 @@ const SectionListItem = ({ object }) => {
         <p key={key} className={`list-item-${key}`}>
           {rest[key]}
         </p>
-      ))}
-    </div>
-  );
-};
-
-const CVContainer = ({ contents }) => {
-  return (
-    <div className="cv">
-      {Object.keys(contents).map((key) => (
-        <CVSection key={key} name={key} element={contents[key]} />
       ))}
     </div>
   );

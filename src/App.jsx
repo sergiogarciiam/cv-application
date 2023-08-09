@@ -13,11 +13,16 @@ function App() {
   };
 
   // STATES
+  const [isCvZoom, setIsCvZoom] = useState(false);
   const [contents, setContents] = useState(initialContents);
   const [isCategoriesDisplay, setIsCategoriesDisplay] = useState(false);
   const [activeContent, setActiveContent] = useState("");
 
   // FUNCTIONS
+  const toggleCv = () => {
+    setIsCvZoom(!isCvZoom);
+  };
+
   const showCategories = () => {
     setIsCategoriesDisplay(true);
   };
@@ -74,7 +79,6 @@ function App() {
 
         <button onClick={showCategories}>+ Add content</button>
       </div>
-
       {isCategoriesDisplay && (
         <Categories
           contents={contents}
@@ -82,8 +86,12 @@ function App() {
           addContent={addContent}
         />
       )}
+      {isCvZoom && <div className="blocker"></div>}
 
-      <Cv contents={contents}></Cv>
+      <Cv contents={contents} toggleCv={toggleCv}></Cv>
+      {isCvZoom && (
+        <Cv contents={contents} toggleCv={toggleCv} zoom="zoom"></Cv>
+      )}
     </div>
   );
 }

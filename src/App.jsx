@@ -79,15 +79,18 @@ function App() {
         <button onClick={showCategories}>+ Add content</button>
       </div>
 
-      {isCategoriesDisplay && (
-        <Categories
-          contents={contents}
-          hideCategories={hideCategories}
-          addContent={addContent}
-        />
-      )}
-
       <Cv contents={contents} toggleCv={toggleCv}></Cv>
+
+      {isCategoriesDisplay && (
+        <>
+          <div className="blocker"></div>
+          <Categories
+            contents={contents}
+            hideCategories={hideCategories}
+            addContent={addContent}
+          />
+        </>
+      )}
 
       {isCvZoom && (
         <>

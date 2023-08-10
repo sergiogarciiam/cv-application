@@ -1,9 +1,9 @@
 /* CATEGORIES */
 .categories {
   position: absolute;
-  top: 10%;
+  top: 20%;
   left: 50%;
-  transform: translate(-50%, 100%);
+  transform: translate(-50%, -50%);
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,7 +16,7 @@
   border-radius: 50px;
 
   background-color: var(--main-color);
-  box-shadow: var(--shadow-color);
+  z-index: 1;
 }
 
 .categories > button:last-of-type {
@@ -40,6 +40,8 @@
 
   color: var(--main-color);
   background-color: var(--background-color);
+  border: 1px solid var(--letter-color);
+  z-index: 1;
 }
 
 .delete-menu > p {

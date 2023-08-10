@@ -6,7 +6,6 @@
   --main-color: #fff;
   --button-color: #eee;
 
-  --shadow-color: 0px 0px 10px #000;
   --blocker-color: #00000071;
 }
 
@@ -41,6 +40,14 @@ button:hover {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.blocker {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blocker-color);
+  z-index: 1;
 }
 
 /* RESPONSIVE */

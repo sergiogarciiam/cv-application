@@ -58,15 +58,15 @@ const CVSection = ({ name, element }) => {
 const SectionList = ({ list }) => {
   return (
     <>
-      {list.map((object, index) => (
-        <SectionListItem key={object.id || index} object={object} />
+      {list.map((listItem, index) => (
+        <SectionListItem key={listItem.id || index} listItem={listItem} />
       ))}
     </>
   );
 };
 
-const SectionListItem = ({ object }) => {
-  const { id, link, name, ...rest } = object;
+const SectionListItem = ({ listItem }) => {
+  const { id, link, name, ...rest } = listItem;
 
   if (id === ZERO || link === EMPTY) {
     return null;
@@ -81,13 +81,17 @@ const SectionListItem = ({ object }) => {
           {name}
         </a>
       ) : (
-        <p className="list-item-name">{name}</p>
+        name && <p className="list-item-name">{name}</p>
       )}
-      {Object.keys(rest).map((key) => (
-        <p key={key} className={`list-item-${key}`}>
-          {rest[key]}
-        </p>
-      ))}
+
+      {Object.keys(rest).map(
+        (key) =>
+          rest[key] !== EMPTY && (
+            <p key={key} className={`list-item-${key}`}>
+              {rest[key]}
+            </p>
+          )
+      )}
     </div>
   );
 };

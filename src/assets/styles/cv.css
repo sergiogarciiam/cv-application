@@ -104,3 +104,24 @@
 .section-3 .list-item-end {
   grid-area: end;
 }
+
+.section-0 .section-address::before {
+  content: "🗺️";
+}
+
+.section-0 .section-email::before {
+  content: "✉️";
+}
+
+.section-0 .section-phone::before {
+  content: "📞";
+}
+
+.section-0 .section-website::before {
+  content: "🔗";
+}
+
+.section-0 .section-github::before,
+.section-0 .section-linkedin::before {
+  content: "🌐";
+}

@@ -17,12 +17,12 @@ export const getContents = {
     description: "",
   },
   2: {
-    id: "roles",
-    title: "Roles",
+    id: "jobs",
+    title: "Jobs",
     list: [
       {
         id: 0,
-        name: "New Professional Experience",
+        name: "New Job",
         employer: "",
         place: "",
         start: "",

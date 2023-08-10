@@ -8,7 +8,7 @@ export const getInputType = {
 export const getID = {
   personal: 0,
   about: 1,
-  roles: 2,
+  jobs: 2,
   educations: 3,
   projects: 4,
   skills: 5,

@@ -7,17 +7,20 @@
 }
 
 .contents-selection > button {
+  padding: 20px 40px;
+  font-weight: bolder;
+  font-size: 1.3rem;
   align-self: center;
+  border-radius: 50px;
 }
 
 /* SPECIFIC CONTENT*/
 .specific-content {
   position: relative;
 
-  background: #eee;
-  color: #222;
+  background: var(--main-color);
   padding: 20px;
-  border-radius: 50px;
+  border-radius: 25px;
   cursor: default;
 
   display: flex;
@@ -27,6 +30,7 @@
 
 .specific-content.hide {
   cursor: pointer;
+  transition: opacity 300ms;
 }
 
 .specific-content.hide:hover {
@@ -53,10 +57,11 @@
 .specific-content img {
   cursor: pointer;
   width: 25px;
+  transition: transform 300ms;
 }
 
 .specific-content img:hover {
-  opacity: 0.7;
+  transform: scale(1.2);
 }
 
 .specific-content-title-container img:last-of-type {

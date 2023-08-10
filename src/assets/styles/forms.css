@@ -11,12 +11,20 @@
 
 .forms-list > h3 {
   padding: 10px;
-  background-color: #fff;
   cursor: pointer;
+  border: 1px solid var(--letter-color);
+  border-radius: 10px;
+  transition: transform 300ms;
 }
 
-.forms-list > button {
-  box-shadow: 0px 0px 10px #222;
+.forms-list > h3.active {
+  background-color: var(--background-color);
+  border: 1px solid var(--background-color);
+  color: var(--main-color);
+}
+
+.forms-list > h3:hover {
+  transform: scale(1.05);
 }
 
 .edit-list-item {

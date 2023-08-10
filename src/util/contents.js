@@ -32,7 +32,7 @@ export const getContents = {
     ],
   },
   3: {
-    id: "education",
+    id: "educations",
     title: "Educations",
     list: [
       {

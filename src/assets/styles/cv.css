@@ -10,9 +10,7 @@
   flex-direction: column;
   gap: 20px;
 
-  background-color: #fff;
-  color: #222;
-
+  background-color: var(--main-color);
   cursor: zoom-in;
 }
 
@@ -21,7 +19,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%);
-  box-shadow: 0px 0px 10px #111;
+  box-shadow: var(--shadow-color);
   cursor: zoom-out;
   z-index: 2;
 }
@@ -30,7 +28,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #00000071;
+  background-color: var(--blocker-color);
   z-index: 1;
 }
 
@@ -59,14 +57,14 @@
 }
 
 .section-0 a {
-  color: #111;
+  color: var(--letter-color);
 }
 
 /* OTHER SECTIONS */
 .section-title {
   font-size: 1.2rem;
   font-weight: bold;
-  border-bottom: 2px solid #222;
+  border-bottom: 2px solid var(--letter-color);
   margin-bottom: 5px;
 }
 

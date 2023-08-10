@@ -31,6 +31,7 @@ function FormList({ dataID, list, addItem, updateList, deleteElementList }) {
               <h3
                 key={listItem.id}
                 data-id={listItem.id}
+                className={listItem.id == itemEdit ? "active" : ""}
                 onClick={changeItemActive}
               >
                 {listItem.name}

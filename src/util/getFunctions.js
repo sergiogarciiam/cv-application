@@ -14,3 +14,11 @@ export const getID = {
   skills: 5,
   languages: 6,
 };
+
+export const getDataID = (e) => {
+  return e.target.getAttribute("data-id");
+};
+
+export const getDataItemIndex = (e) => {
+  return e.target.getAttribute("data-item-index");
+};

@@ -4,6 +4,7 @@ import Form from "./Form";
 import DeleteMenu from "./DeleteMenu";
 import Trash from "../assets/images/trash.svg";
 import Close from "../assets/images/close.svg";
+import { getDataID } from "../util/getFunctions";
 
 function FormList({ dataID, list, addItem, updateList, deleteElementList }) {
   const listName =
@@ -14,7 +15,7 @@ function FormList({ dataID, list, addItem, updateList, deleteElementList }) {
   const [itemEdit, setItemEdit] = useState(null);
 
   const changeItemActive = (e) => {
-    setItemEdit(e.target.getAttribute("data-id") || null);
+    setItemEdit(getDataID(e) || null);
   };
 
   return (
@@ -22,26 +23,26 @@ function FormList({ dataID, list, addItem, updateList, deleteElementList }) {
       <div className="forms-list">
         <p>{listName} List</p>
         {list.length > 1 &&
-          list.map((object) =>
-            object.id === 0 ? null : (
+          list.map((listItem) =>
+            listItem.id === 0 ? null : (
               <h3
-                key={object.id}
-                data-id={object.id}
+                key={listItem.id}
+                data-id={listItem.id}
                 onClick={changeItemActive}
               >
-                {object.name}
+                {listItem.name}
               </h3>
             )
           )}
         <button onClick={addItem}>Add item</button>
       </div>
       {list.length > 1 &&
-        list.map((object, index) =>
-          object.id == itemEdit ? (
+        list.map((listItem, index) =>
+          listItem.id == itemEdit ? (
             <EditListItem
-              key={object.id}
-              objectID={index}
-              object={object}
+              key={listItem.id}
+              listItemIndex={index}
+              listItem={listItem}
               changeItemActive={changeItemActive}
               updateList={updateList}
               deleteElementList={deleteElementList}
@@ -53,8 +54,8 @@ function FormList({ dataID, list, addItem, updateList, deleteElementList }) {
 }
 
 function EditListItem({
-  object,
-  objectID,
+  listItemIndex,
+  listItem,
   changeItemActive,
   updateList,
   deleteElementList,
@@ -70,26 +71,27 @@ function EditListItem({
   };
 
   return (
-    <div className="edit-list-item" key={object.id} data-id={object.id}>
-      {Object.keys(object).map((key) => {
+    <div className="edit-list-item" key={listItem.id} data-id={listItem.id}>
+      {Object.keys(listItem).map((key) => {
         if (key === "id") return null;
         return (
           <Form
             key={key}
             dataID={key}
-            objectID={objectID}
-            data={object[key]}
+            listItemIndex={listItemIndex}
+            data={listItem[key]}
             changeData={updateList}
           />
         );
       })}
       <div className="edit-list-item-images">
-        <img data-id={object.id} src={Trash} onClick={showDeleteMenu}></img>
+        <img data-id={listItem.id} src={Trash} onClick={showDeleteMenu}></img>
         <img src={Close} onClick={changeItemActive}></img>
       </div>
       {isDeleteMenu && (
         <DeleteMenu
-          dataID={object.id}
+          dataID={listItem.id}
+          listItemIndex={listItemIndex}
           deleteContent={deleteElementList}
           hideDeleteMenu={hideDeleteMenu}
         ></DeleteMenu>

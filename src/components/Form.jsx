@@ -1,7 +1,7 @@
 import { getInputType } from "../util/getFunctions";
 import { DEFAULT_INPUT_TYPE, DESCRIPTION } from "../util/constants";
 
-function Form({ dataID, objectID = "", data, changeData }) {
+function Form({ dataID, listItemIndex = "", data, changeData }) {
   const type = getInputType[dataID] || DEFAULT_INPUT_TYPE;
   const isDescription = dataID === DESCRIPTION;
   const idName = dataID.charAt(0).toUpperCase() + dataID.slice(1);
@@ -13,7 +13,7 @@ function Form({ dataID, objectID = "", data, changeData }) {
         <textarea
           value={data}
           type={type}
-          data-object-id={objectID}
+          data-item-index={listItemIndex}
           data-id={dataID}
           onChange={changeData}
         ></textarea>
@@ -21,7 +21,7 @@ function Form({ dataID, objectID = "", data, changeData }) {
         <input
           value={data}
           type={type}
-          data-object-id={objectID}
+          data-item-index={listItemIndex}
           data-id={dataID}
           onChange={changeData}
         ></input>

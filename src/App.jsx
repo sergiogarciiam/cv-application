@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getContents } from "./util/contents.js";
-import { getID } from "./util/getFunctions.js";
+import { getDataID, getID } from "./util/getFunctions.js";
 import Categories from "./components/Categories.jsx";
 import Cv from "./components/Cv.jsx";
 import SpecificContent from "./components/SpecificContent.jsx";
@@ -23,7 +23,7 @@ function App() {
   };
 
   const addContent = (e) => {
-    const id = getID[e.target.getAttribute("data-id")];
+    const id = getID[getDataID(e)];
     setContents({
       ...contents,
       [id]: getContents[id],
@@ -32,7 +32,7 @@ function App() {
 
   const deleteContent = (e) => {
     let newContents = { ...contents };
-    const id = getID[e.target.getAttribute("data-id")];
+    const id = getID[getDataID(e)];
     delete newContents[id];
     setContents(newContents);
   };
@@ -51,7 +51,7 @@ function App() {
   };
 
   const changeActiveContent = (e) => {
-    setActiveContent(e.target.getAttribute("data-id"));
+    setActiveContent(getDataID(e));
   };
 
   // LOAD TO STORAGE

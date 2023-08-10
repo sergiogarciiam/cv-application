@@ -5,6 +5,7 @@ import Form from "./Form";
 import DeleteMenu from "./DeleteMenu";
 import Trash from "../assets/images/trash.svg";
 import Close from "../assets/images/close.svg";
+import { getDataID, getDataItemIndex } from "../util/getFunctions";
 
 function SpecificContent({
   content,
@@ -23,7 +24,7 @@ function SpecificContent({
 
   const changeData = (e) => {
     let newContent = { ...content };
-    newContent[e.target.getAttribute("data-id")] = e.target.value;
+    newContent[getDataID(e)] = e.target.value;
     changeContent(newContent);
   };
 
@@ -105,16 +106,13 @@ function ContentDetails({ data, changeData, changeList }) {
 
   const updateList = (e) => {
     const newList = [...data.list];
-    newList[e.target.getAttribute("data-object-id")][
-      e.target.getAttribute("data-id")
-    ] = e.target.value;
+    newList[getDataItemIndex(e)][getDataID(e)] = e.target.value;
     changeList(newList);
   };
 
   const deleteElementList = (e) => {
     const newList = [...data.list];
-    console.log(e.target.getAttribute("data-id"));
-    newList.splice(e.target.getAttribute("data-id"), 1);
+    newList.splice(getDataItemIndex(e), 1);
     changeList(newList);
   };
 

@@ -1,8 +1,47 @@
-# React + Vite
+# CV Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App to create a simple CV
 
-Currently, two official plugins are available:
+## About the App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is from [The Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-cv-application) curriculum.
+
+### Features
+
+- The following sections can be added: personal details, about me, roles, educations, projects, skills, languages
+- Have local storage
+- It's support responsive design (only the creation)
+
+### Tools and technology
+
+- Visual Studio Code
+- Linux Terminal
+- Figma
+- Git and GitHub
+- HTML and CSS
+- JavaScript
+- React
+- Vite
+
+### Learnings
+
+- Setting up a react environment using vite
+
+- Basic use of react
+
+## Screenshot
+
+![screenshot](./src/assets/images/screenshot.png)
+
+## Acknowledgements
+
+- Project idea by [The Odin Project](https://www.theodinproject.com/)
+- Web icon from [favicon](https://favicon.io/)
+
+## Author
+
+[Sergio García](https://github.com/sergiogarciiam)
+
+## License
+
+This project is open source and available under the [MIT License](./LICENSE).

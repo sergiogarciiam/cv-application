@@ -23,7 +23,7 @@ function App() {
   };
 
   const addContent = (e) => {
-    const id = getID[e.target.id];
+    const id = getID[e.target.getAttribute("data-id")];
     setContents({
       ...contents,
       [id]: getContents[id],
@@ -32,7 +32,7 @@ function App() {
 
   const deleteContent = (e) => {
     let newContents = { ...contents };
-    const id = getID[e.target.id];
+    const id = getID[e.target.getAttribute("data-id")];
     delete newContents[id];
     setContents(newContents);
   };
@@ -51,7 +51,7 @@ function App() {
   };
 
   const changeActiveContent = (e) => {
-    setActiveContent(e.target.id);
+    setActiveContent(e.target.getAttribute("data-id"));
   };
 
   // LOAD TO STORAGE

@@ -1,10 +1,10 @@
 import { getInputType } from "../util/getFunctions";
 import { DEFAULT_INPUT_TYPE, DESCRIPTION } from "../util/constants";
 
-function Form({ objectId, id, data, changeData }) {
-  const type = getInputType[id] || DEFAULT_INPUT_TYPE;
-  const isDescription = id === DESCRIPTION;
-  const idName = id.charAt(0).toUpperCase() + id.slice(1);
+function Form({ dataID, objectID = "", data, changeData }) {
+  const type = getInputType[dataID] || DEFAULT_INPUT_TYPE;
+  const isDescription = dataID === DESCRIPTION;
+  const idName = dataID.charAt(0).toUpperCase() + dataID.slice(1);
 
   return (
     <div className="form">
@@ -12,18 +12,18 @@ function Form({ objectId, id, data, changeData }) {
       {isDescription ? (
         <textarea
           value={data}
-          className={objectId}
-          id={id}
-          onChange={changeData}
           type={type}
+          data-object-id={objectID}
+          data-id={dataID}
+          onChange={changeData}
         ></textarea>
       ) : (
         <input
           value={data}
-          className={objectId}
-          id={id}
-          onChange={changeData}
           type={type}
+          data-object-id={objectID}
+          data-id={dataID}
+          onChange={changeData}
         ></input>
       )}
     </div>

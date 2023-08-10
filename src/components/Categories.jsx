@@ -13,7 +13,7 @@ function Categories({ contents, hideCategories, addContent }) {
           return (
             <button
               key={getContents[key].id}
-              id={getContents[key].id}
+              data-id={getContents[key].id}
               onClick={addNewContent}
             >
               {getContents[key].title}

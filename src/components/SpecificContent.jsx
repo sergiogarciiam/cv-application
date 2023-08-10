@@ -1,3 +1,4 @@
+import { ID, LIST, TITLE } from "../util/constants";
 import { useState } from "react";
 import FormList from "./FormList";
 import Form from "./Form";
@@ -22,7 +23,7 @@ function SpecificContent({
 
   const changeData = (e) => {
     let newContent = { ...content };
-    newContent[e.target.id] = e.target.value;
+    newContent[e.target.getAttribute("data-id")] = e.target.value;
     changeContent(newContent);
   };
 
@@ -44,11 +45,11 @@ function SpecificContent({
     <>
       {!isActive && (
         <div
-          id={content.id}
+          data-id={content.id}
           className="specific-content hide"
           onClick={changeActiveContent}
         >
-          <h2 id={content.id} onClick={changeActiveContent}>
+          <h2 data-id={content.id} onClick={changeActiveContent}>
             {content.title}
           </h2>
         </div>
@@ -57,11 +58,15 @@ function SpecificContent({
         <div className="specific-content">
           <div className="specific-content-title-container">
             <input
+              data-id={content.id}
               value={content.title}
-              id={content.id}
               onChange={changeTitle}
             />
-            <img id={content.id} src={Trash} onClick={showDeleteMenu}></img>
+            <img
+              data-id={content.id}
+              src={Trash}
+              onClick={showDeleteMenu}
+            ></img>
             <img src={Close} onClick={changeActiveContent}></img>
           </div>
 
@@ -73,7 +78,7 @@ function SpecificContent({
 
           {isDeleteMenu && (
             <DeleteMenu
-              id={content.id}
+              dataID={content.id}
               deleteContent={deleteContent}
               hideDeleteMenu={hideDeleteMenu}
             ></DeleteMenu>
@@ -100,14 +105,16 @@ function ContentDetails({ data, changeData, changeList }) {
 
   const updateList = (e) => {
     const newList = [...data.list];
-    console.log(e.target.classList[0]);
-    newList[e.target.classList[0]][e.target.id] = e.target.value;
+    newList[e.target.getAttribute("data-object-id")][
+      e.target.getAttribute("data-id")
+    ] = e.target.value;
     changeList(newList);
   };
 
   const deleteElementList = (e) => {
     const newList = [...data.list];
-    newList.splice(e.target.id, 1);
+    console.log(e.target.getAttribute("data-id"));
+    newList.splice(e.target.getAttribute("data-id"), 1);
     changeList(newList);
   };
 
@@ -115,12 +122,12 @@ function ContentDetails({ data, changeData, changeList }) {
     <div className="specific-content-details-container">
       {data !== undefined &&
         Object.keys(data).map((key) => {
-          if (key === "id" || key === "title") return null;
-          else if (key === "list") {
+          if (key === ID || key === TITLE) return null;
+          else if (key === LIST) {
             return (
               <FormList
                 key={key}
-                dataId={data.id}
+                dataID={data.id}
                 list={data[key]}
                 addItem={addItem}
                 updateList={updateList}
@@ -131,7 +138,7 @@ function ContentDetails({ data, changeData, changeList }) {
             return (
               <Form
                 key={key}
-                id={key}
+                dataID={key}
                 data={data[key]}
                 changeData={changeData}
               />

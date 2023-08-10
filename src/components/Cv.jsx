@@ -6,6 +6,7 @@ import {
   LIST,
   TITLE,
   WEBSITE,
+  ZERO,
 } from "../util/constants";
 
 const CVContainer = ({ contents, toggleCv, zoom = "" }) => {
@@ -67,7 +68,7 @@ const SectionList = ({ list }) => {
 const SectionListItem = ({ object }) => {
   const { id, link, name, ...rest } = object;
 
-  if (id === 0 || link === "") {
+  if (id === ZERO || link === EMPTY) {
     return null;
   }
 

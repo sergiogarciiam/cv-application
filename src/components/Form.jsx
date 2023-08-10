@@ -1,5 +1,5 @@
-import { getInputType } from "../util/getFunctions";
 import { DEFAULT_INPUT_TYPE, DESCRIPTION } from "../util/constants";
+import { getInputType } from "../util/getFunctions";
 
 function Form({ dataID, listItemIndex = "", data, changeData }) {
   const type = getInputType[dataID] || DEFAULT_INPUT_TYPE;

@@ -1,12 +1,13 @@
-import { LINKS, PERSONAL } from "../util/constants";
 import { useState } from "react";
+import { LINKS, PERSONAL } from "../util/constants";
+import { getDataID } from "../util/getFunctions";
 import Form from "./Form";
 import DeleteMenu from "./DeleteMenu";
 import Trash from "../assets/images/trash.svg";
 import Close from "../assets/images/close.svg";
-import { getDataID } from "../util/getFunctions";
 
 function FormList({ dataID, list, addItem, updateList, deleteElementList }) {
+  // VARIABLES
   const listName =
     dataID === PERSONAL
       ? LINKS
@@ -14,10 +15,12 @@ function FormList({ dataID, list, addItem, updateList, deleteElementList }) {
 
   const [itemEdit, setItemEdit] = useState(null);
 
+  // FUNCTIONS
   const changeItemActive = (e) => {
     setItemEdit(getDataID(e) || null);
   };
 
+  // RENDER
   return (
     <>
       <div className="forms-list">
@@ -60,8 +63,10 @@ function EditListItem({
   updateList,
   deleteElementList,
 }) {
+  // STATES
   const [isDeleteMenu, setIsDeleteMenu] = useState(false);
 
+  // FUNCTIONS
   const showDeleteMenu = () => {
     setIsDeleteMenu(true);
   };
@@ -70,6 +75,7 @@ function EditListItem({
     setIsDeleteMenu(false);
   };
 
+  // RENDER
   return (
     <div className="edit-list-item" key={listItem.id} data-id={listItem.id}>
       {Object.keys(listItem).map((key) => {

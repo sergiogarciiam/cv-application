@@ -1,11 +1,11 @@
-import { ID, LIST, TITLE } from "../util/constants";
 import { useState } from "react";
+import { ID, LIST, TITLE } from "../util/constants";
+import { getDataID, getDataItemIndex } from "../util/getFunctions";
 import FormList from "./FormList";
 import Form from "./Form";
 import DeleteMenu from "./DeleteMenu";
 import Trash from "../assets/images/trash.svg";
 import Close from "../assets/images/close.svg";
-import { getDataID, getDataItemIndex } from "../util/getFunctions";
 
 function SpecificContent({
   content,
@@ -14,8 +14,10 @@ function SpecificContent({
   changeContent,
   deleteContent,
 }) {
+  // STATES
   const [isDeleteMenu, setIsDeleteMenu] = useState(false);
 
+  // FUNCTIONS
   const changeTitle = (e) => {
     let newContent = { ...content };
     newContent.title = e.target.value;
@@ -42,20 +44,10 @@ function SpecificContent({
     setIsDeleteMenu(false);
   };
 
+  // RENDER
   return (
     <>
-      {!isActive && (
-        <div
-          data-id={content.id}
-          className="specific-content hide"
-          onClick={changeActiveContent}
-        >
-          <h2 data-id={content.id} onClick={changeActiveContent}>
-            {content.title}
-          </h2>
-        </div>
-      )}
-      {isActive && (
+      {isActive ? (
         <div className="specific-content">
           <div className="specific-content-title-container">
             <input
@@ -85,12 +77,23 @@ function SpecificContent({
             ></DeleteMenu>
           )}
         </div>
+      ) : (
+        <div
+          data-id={content.id}
+          className="specific-content hide"
+          onClick={changeActiveContent}
+        >
+          <h2 data-id={content.id} onClick={changeActiveContent}>
+            {content.title}
+          </h2>
+        </div>
       )}
     </>
   );
 }
 
 function ContentDetails({ data, changeData, changeList }) {
+  // FUNCTIONS
   const addItem = () => {
     const newList = [...data.list];
     const maxId = Math.max(...newList.map((item) => item.id), 0);
@@ -116,6 +119,7 @@ function ContentDetails({ data, changeData, changeList }) {
     changeList(newList);
   };
 
+  // RENDER
   return (
     <div className="specific-content-details-container">
       {data !== undefined &&

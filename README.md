@@ -9,7 +9,7 @@ This project is from [The Odin Project](https://www.theodinproject.com/lessons/n
 ### Features
 
 - The following sections can be added: personal details, about me, roles, educations, projects, skills, languages
-- Have local storage
+- It has local storage
 - It's support responsive design (only the creation)
 
 ### Tools and technology

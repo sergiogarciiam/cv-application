@@ -61,7 +61,7 @@ function App() {
 
   // RENDER
   return (
-    <div className="page">
+    <>
       <div className="contents-selection">
         {Object.keys(contents).map((key) => {
           return (
@@ -98,7 +98,7 @@ function App() {
           <Cv contents={contents} toggleCv={toggleCv} zoom="zoom"></Cv>
         </>
       )}
-    </div>
+    </>
   );
 }
 
